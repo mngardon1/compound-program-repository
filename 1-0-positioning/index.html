@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>1. Positioning | Compound Consultant</title>
+    <meta name="description" content="The upstream layer. Most consulting businesses don't have a pipeline problem — they have a positioning problem that looks like a pipeline problem.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #132539; --paper: #F9F8F5; --teal: #13B5A2; --teal-deep: #12917E; --teal-light: #5DCFC1; --mint: #D5F0EC; --slate: #6B7A8D; --slate-deep: #2A3F54; --white: #FFFFFF; --warning: #D4A338;
+            --text-on-dark: rgba(255,255,255,0.92); --text-muted-dark: rgba(255,255,255,0.72); --text-faint-dark: rgba(255,255,255,0.55);
+            --font-display: 'Sora', Arial, sans-serif; --font-body: 'Inter', Arial, sans-serif; --font-mono: 'JetBrains Mono', monospace;
+            --max-content: 880px; --max-wide: 1080px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { background: var(--paper); color: var(--navy); }
+        body { font-family: var(--font-body); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal); text-decoration: none; }
+        a:hover { color: var(--teal-deep); }
+        header { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(19,37,57,0.08); }
+        .brand { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--navy); }
+        .header-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
+        .breadcrumb-wrap { max-width: var(--max-wide); margin: 0 auto; padding: 28px 40px 0; }
+        .breadcrumb { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); }
+        .breadcrumb a { color: var(--slate); } .breadcrumb a:hover { color: var(--navy); }
+        .breadcrumb span { margin: 0 8px; }
+        .hero { background: var(--navy); color: var(--white); padding: 80px 40px 96px; text-align: center; margin-top: 32px; }
+        .hero .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; }
+        .hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 6vw, 60px); line-height: 1.1; color: var(--white); margin-bottom: 20px; letter-spacing: -0.01em; }
+        .hero .subtitle { font-size: 19px; color: var(--text-muted-dark); max-width: 680px; margin: 0 auto; line-height: 1.6; }
+        .section { padding: 88px 40px; }
+        .section.dark { background: var(--navy); color: var(--white); }
+        .section.dark h2, .section.dark h3 { color: var(--white); }
+        .section.dark .eyebrow { color: var(--teal); }
+        .section-inner { max-width: var(--max-content); margin: 0 auto; }
+        .section-inner.wide { max-width: var(--max-wide); }
+        .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate); margin-bottom: 16px; }
+        h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 4vw, 40px); line-height: 1.15; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.01em; }
+        .section-intro { font-size: 18px; color: var(--slate); max-width: 720px; margin-bottom: 36px; line-height: 1.65; }
+        .section.dark .section-intro { color: var(--text-muted-dark); }
+        h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.3; color: var(--navy); margin-bottom: 10px; }
+        p { margin-bottom: 18px; } p:last-child { margin-bottom: 0; }
+        .section.dark p { color: var(--text-on-dark); }
+        strong { font-weight: 600; color: var(--navy); }
+        .section.dark strong { color: var(--white); }
+        em { font-style: italic; }
+        code { font-family: var(--font-mono); font-size: 14px; background: rgba(19,181,162,0.08); color: var(--teal-deep); padding: 1px 6px; border-radius: 3px; }
+        .section.dark code { background: rgba(93,207,193,0.12); color: var(--teal-light); }
+        .pull-quote { margin: 32px 0; padding: 24px 32px; background: var(--white); border-left: 3px solid var(--teal); font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+        .section.dark .pull-quote { background: rgba(255,255,255,0.05); color: var(--white); }
+
+        .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+        .three-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 28px 26px; border-top: 3px solid var(--teal); }
+        .three-card.c2 { border-top-color: var(--teal-light); }
+        .three-card.c3 { border-top-color: var(--mint); }
+        .three-card .three-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+        .three-card.c2 .three-label { color: var(--teal-light); }
+        .three-card.c3 .three-label { color: var(--mint); }
+        .three-card h3 { font-size: 22px; margin-bottom: 12px; color: var(--white); }
+        .three-card p { font-size: 15px; color: var(--text-muted-dark); line-height: 1.6; margin: 0; }
+
+        .module-list { list-style: none; margin-top: 20px; }
+        .module-list li { padding: 24px 28px; background: var(--white); border: 1px solid rgba(19,37,57,0.08); border-left: 3px solid var(--teal); margin-bottom: 12px; }
+        .module-list .m-num { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 6px; }
+        .module-list h3 { font-size: 18px; margin-bottom: 6px; }
+        .module-list p { font-size: 15px; color: var(--slate-deep); margin: 0; line-height: 1.6; }
+        .module-list .m-link { display: inline-block; margin-top: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); }
+
+        .when-list { list-style: none; margin-top: 16px; padding: 0; }
+        .when-list li { padding: 10px 0 10px 28px; position: relative; font-size: 16px; color: var(--text-on-dark); line-height: 1.6; }
+        .when-list li::before { content: '→'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+        .when-list li strong { color: var(--white); }
+
+        .cta-bar { background: var(--navy); color: var(--white); padding: 64px 40px; text-align: center; }
+        .cta-bar .eyebrow { color: var(--teal); margin-bottom: 16px; }
+        .cta-bar h2 { color: var(--white); margin-bottom: 16px; }
+        .cta-bar p { color: var(--text-muted-dark); max-width: 620px; margin: 0 auto 28px; }
+        .cta-button { display: inline-block; padding: 16px 32px; background: var(--teal); color: var(--navy); font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 3px; transition: background 0.15s; }
+        .cta-button:hover { background: var(--teal-light); color: var(--navy); }
+
+        footer { background: var(--navy); color: var(--text-muted-dark); padding: 48px 40px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
+        footer .brand { color: var(--white); font-size: 14px; margin-bottom: 8px; display: block; }
+        footer .footer-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+
+        @media (max-width: 900px) { .three-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 700px) { header { padding: 16px 24px; } .hero { padding: 56px 24px 64px; } .section { padding: 56px 24px; } .cta-bar { padding: 56px 24px; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="brand">Compound Consultant</a>
+        <div class="header-label">Phase 1 — Positioning</div>
+    </header>
+
+    <div class="breadcrumb-wrap">
+        <div class="breadcrumb">
+            <a href="/">Program Map</a>
+            <span>/</span>
+            Phase 1 — Positioning
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="eyebrow">Phase 1 · Overview</div>
+        <h1>Positioning</h1>
+        <p class="subtitle">Most consulting businesses don't have a pipeline problem. They have a positioning problem that looks like a pipeline problem. Phase 1 is where you solve the upstream issue before everything downstream gets harder.</p>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">The Upstream Layer</div>
+            <h2>Positioning's vital role.</h2>
+            <p>Most consultants spend their energy on downstream problems: not enough leads, outreach that gets ignored, proposals that don't close, referrals that don't come. So they do more — more content, more outreach, more networking. Nothing sticks, because none of those are the real problem. They're symptoms of one upstream bottleneck: unclear positioning.</p>
+            <p>When positioning is unclear, every downstream function breaks: Pipeline doesn't know who to attract. Outreach doesn't know what to say. Proposals don't have anything to anchor to. Referral partners don't have language to describe you accurately.</p>
+            <p>Every downstream function is trying to compensate for something that should have been solved at the source. More activity on a broken foundation produces more noise, not more clients.</p>
+            <div class="pull-quote">
+                Solve positioning first and the right buyers self-identify. Outreach lands. Proposals close faster. Referrals get precise.
+            </div>
+            <p>Everything in Phase 2 and Phase 3 draws directly from what gets built in Phase 1. An offer built on vague positioning is a weak offer. A sales page built on vague positioning doesn't convert. A content engine built on vague positioning produces noise. The upstream problem has to be solved first — or you're building on sand.</p>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner wide">
+            <div class="eyebrow">The Three Components</div>
+            <h2>POV → Problem → Person.</h2>
+            <p class="section-intro">Positioning is built from three things. They're not independent — each one shapes the next. Phase 1.2 (the Positioning Architect skill) works through all three in sequence.</p>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="three-label">Component 01 — Foundation</div>
+                    <h3>POV</h3>
+                    <p>How you see the world differently. The contrarian insight that makes your perspective worth paying for. Includes your worldview, your enemy, and your unique mechanism. Without a POV, you're describing a service. With one, you're describing a perspective.</p>
+                </div>
+                <div class="three-card c2">
+                    <div class="three-label">Component 02 — Commitment</div>
+                    <h3>Problem</h3>
+                    <p>The specific thing your buyer is stuck on when they hire you. In their language, not yours. One problem. Sharp enough to exclude people. Stated as something the buyer would say, not as a consultant diagnosis.</p>
+                </div>
+                <div class="three-card c3">
+                    <div class="three-label">Component 03 — Specificity</div>
+                    <h3>Person</h3>
+                    <p>Who has that problem worst. Defined by situation, not by title or industry. What's happening in their world when they become a buyer. The person who reads your positioning and says "you're describing me."</p>
+                </div>
+            </div>
+
+            <p style="margin-top:32px;">Each component narrows from the one before. Your worldview determines which problems you can credibly own. The problem you commit to determines who has it most urgently. By the time all three are locked, you have positioning that is specific, defensible, and yours — not a version of what every other consultant in your space is saying.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">When Positioning Clicks</div>
+            <h2>The shift that changes everything.</h2>
+            <p>There's a moment in every consulting business where something shifts. Think of it as product-market fit for a consulting practice — it's not a strategy or a tactic, it's what happens when the market can finally see you clearly.</p>
+            <p>It shows up in concrete ways:</p>
+            <ul class="when-list" style="color:var(--slate-deep);">
+                <li style="color:var(--slate-deep);">Someone reads your LinkedIn profile and reaches out unprompted — and they're actually the right person</li>
+                <li style="color:var(--slate-deep);">A referral partner describes you accurately to a prospect without you having to brief them</li>
+                <li style="color:var(--slate-deep);">You're on a discovery call and the prospect says "you described my situation better than I could"</li>
+                <li style="color:var(--slate-deep);">You raise your rate and nobody flinches</li>
+                <li style="color:var(--slate-deep);">Conversations get shorter and more decisive — because fit is obvious before the call starts</li>
+            </ul>
+            <p style="margin-top:24px;">What's changed isn't your capability. You were already capable. What's changed is that your positioning tells the right story to the right person at the right moment — and the market responds to that.</p>
+            <p>The consultants who stay stuck aren't less talented. They just never solved the upstream problem. They kept generating more activity — more outreach, more content, more networking — without fixing what the activity was supposed to communicate. Positioning is the fix. Everything else is volume.</p>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">Phase 1 Modules</div>
+            <h2>Four pages. One outcome: tested positioning.</h2>
+            <p class="section-intro">Phase 1 has four modules. Two skill invocations, one manual testing module, one iteration module. All of it runs through your Strategist Coach.</p>
+
+            <ul class="module-list" style="background:transparent;">
+                <li style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-left:3px solid var(--teal);">
+                    <div class="m-num">1.1 · Phase 1 begins</div>
+                    <h3 style="color:var(--white);">Run the Diagnostic</h3>
+                    <p style="color:var(--text-muted-dark);">Invoke the Compound Diagnostic skill inside your Strategist Coach. 30 minutes of structured Q&A across Person, Problem, POV. Produces your first canonical file: <code>compound-consultant-diagnostic.md</code>.</p>
+                    <a href="/1-1-run-the-diagnostic" class="m-link">Open 1.1 →</a>
+                </li>
+                <li style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-left:3px solid var(--teal-light);">
+                    <div class="m-num" style="color:var(--teal-light);">1.2 · Foundation build</div>
+                    <h3 style="color:var(--white);">Build Your Positioning</h3>
+                    <p style="color:var(--text-muted-dark);">Invoke the Positioning Architect skill. 60–90 minute guided build across POV, Problem, Person, Synthesis. Produces 7 canonical files that every downstream phase reads.</p>
+                    <a href="/1-2-build-your-positioning" class="m-link" style="color:var(--teal-light);">Open 1.2 →</a>
+                </li>
+                <li style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-left:3px solid var(--mint);">
+                    <div class="m-num" style="color:var(--mint);">1.3 · Reality check</div>
+                    <h3 style="color:var(--white);">Test Your Positioning</h3>
+                    <p style="color:var(--text-muted-dark);">5+ real conversations with real ICP contacts. Hunt for No's, not validation. Log everything verbatim. Look for patterns. This is the only module without a skill — the work happens in the market.</p>
+                    <a href="/1-3-test-your-positioning" class="m-link" style="color:var(--mint);">Open 1.3 →</a>
+                </li>
+                <li style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-left:3px solid var(--teal);">
+                    <div class="m-num">1.4 · Refine</div>
+                    <h3 style="color:var(--white);">Iterate Your Positioning</h3>
+                    <p style="color:var(--text-muted-dark);">Bring market signal back to your Strategist Coach. Re-invoke the Positioning Architect skill in iteration mode. The coach categorizes the signal, drafts revisions, updates the files. Repeat as needed.</p>
+                    <a href="/1-4-iterate-your-positioning" class="m-link">Open 1.4 →</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">What You'll Have at the End</div>
+            <h2>Conviction. Plus the files that prove it.</h2>
+            <p>By the end of Phase 1 you will have a clear answer to the question every consultant struggles with: <em>what do I actually do, and why does it matter to the specific person who needs it most?</em></p>
+            <p>Not a polished elevator pitch. Not a tagline you rehearsed. Specifically:</p>
+            <ul style="list-style:none;margin:18px 0;padding:0;">
+                <li style="padding:6px 0 6px 22px;position:relative;font-size:16px;color:var(--slate-deep);"><span style="position:absolute;left:0;color:var(--teal);">·</span> A genuine point of view on your market — one you can speak from without thinking</li>
+                <li style="padding:6px 0 6px 22px;position:relative;font-size:16px;color:var(--slate-deep);"><span style="position:absolute;left:0;color:var(--teal);">·</span> Precise language for the problem your best clients bring to you — their words, not yours</li>
+                <li style="padding:6px 0 6px 22px;position:relative;font-size:16px;color:var(--slate-deep);"><span style="position:absolute;left:0;color:var(--teal);">·</span> A clear picture of exactly who you're for and who you're not for</li>
+                <li style="padding:6px 0 6px 22px;position:relative;font-size:16px;color:var(--slate-deep);"><span style="position:absolute;left:0;color:var(--teal);">·</span> A contrarian take on your domain that makes your perspective distinct rather than interchangeable</li>
+                <li style="padding:6px 0 6px 22px;position:relative;font-size:16px;color:var(--slate-deep);"><span style="position:absolute;left:0;color:var(--teal);">·</span> The language your referral partners need to describe you accurately</li>
+                <li style="padding:6px 0 6px 22px;position:relative;font-size:16px;color:var(--slate-deep);"><span style="position:absolute;left:0;color:var(--teal);">·</span> 8 canonical files in your Compound O.S. — the diagnostic plus the 7 positioning files</li>
+            </ul>
+            <p>And something harder to quantify but more important than any of it: conviction. The confidence that comes from having done the hard work of getting specific. Most consultants hedge because they haven't done this work. Once you have, the hedging stops.</p>
+            <div class="pull-quote">
+                The documents are evidence of the clarity. The clarity itself is what changes your business.
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-bar">
+        <div class="eyebrow">Start Phase 1</div>
+        <h2>Run the Diagnostic.</h2>
+        <p>Your Strategist Coach is installed. The diagnostic skill is loaded in its knowledge base. Time to invoke it and produce your first canonical file.</p>
+        <a href="/1-1-run-the-diagnostic" class="cta-button">1.1 — Run the Diagnostic →</a>
+    </section>
+
+    <footer>
+        <span class="brand">Compound Consultant</span>
+        <div class="footer-label">Phase 1 — Positioning</div>
+    </footer>
+
+</body>
+</html>

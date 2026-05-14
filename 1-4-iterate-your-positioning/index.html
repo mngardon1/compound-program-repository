@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>1.4 Iterate Your Positioning | Compound Consultant</title>
+    <meta name="description" content="Bring market signal back to the Positioning skill. The coach categorizes the feedback, drafts revisions, and updates your canonical files.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #132539; --paper: #F9F8F5; --teal: #13B5A2; --teal-deep: #12917E; --teal-light: #5DCFC1; --mint: #D5F0EC; --slate: #6B7A8D; --slate-deep: #2A3F54; --white: #FFFFFF; --warning: #D4A338;
+            --text-on-dark: rgba(255,255,255,0.92); --text-muted-dark: rgba(255,255,255,0.72);
+            --font-display: 'Sora', Arial, sans-serif; --font-body: 'Inter', Arial, sans-serif; --font-mono: 'JetBrains Mono', monospace;
+            --max-content: 880px; --max-wide: 1080px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { background: var(--paper); color: var(--navy); }
+        body { font-family: var(--font-body); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal); text-decoration: none; } a:hover { color: var(--teal-deep); }
+        header { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(19,37,57,0.08); }
+        .brand { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--navy); }
+        .header-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
+        .breadcrumb-wrap { max-width: var(--max-wide); margin: 0 auto; padding: 28px 40px 0; }
+        .breadcrumb { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); }
+        .breadcrumb a { color: var(--slate); } .breadcrumb a:hover { color: var(--navy); }
+        .breadcrumb span { margin: 0 8px; }
+        .hero { background: var(--navy); color: var(--white); padding: 80px 40px 96px; text-align: center; margin-top: 32px; }
+        .hero .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; }
+        .hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 6vw, 60px); line-height: 1.1; color: var(--white); margin-bottom: 20px; letter-spacing: -0.01em; }
+        .hero .subtitle { font-size: 19px; color: var(--text-muted-dark); max-width: 680px; margin: 0 auto; line-height: 1.6; }
+        .hero .meta-pill { display: inline-flex; gap: 24px; margin-top: 32px; padding: 12px 24px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark); }
+        .hero .meta-pill .sep { color: rgba(255,255,255,0.4); }
+        .section { padding: 88px 40px; }
+        .section.dark { background: var(--navy); color: var(--white); }
+        .section.dark h2, .section.dark h3 { color: var(--white); }
+        .section.dark .eyebrow { color: var(--teal); }
+        .section-inner { max-width: var(--max-content); margin: 0 auto; }
+        .section-inner.wide { max-width: var(--max-wide); }
+        .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate); margin-bottom: 16px; }
+        h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 4vw, 40px); line-height: 1.15; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.01em; }
+        .section-intro { font-size: 18px; color: var(--slate); max-width: 720px; margin-bottom: 36px; line-height: 1.65; }
+        .section.dark .section-intro { color: var(--text-muted-dark); }
+        h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.3; color: var(--navy); margin-bottom: 10px; }
+        p { margin-bottom: 18px; } p:last-child { margin-bottom: 0; }
+        .section.dark p { color: var(--text-on-dark); }
+        strong { font-weight: 600; color: var(--navy); }
+        .section.dark strong { color: var(--white); }
+        em { font-style: italic; }
+        code { font-family: var(--font-mono); font-size: 14px; background: rgba(19,181,162,0.08); color: var(--teal-deep); padding: 1px 6px; border-radius: 3px; }
+        .section.dark code { background: rgba(93,207,193,0.12); color: var(--teal-light); }
+        .pull-quote { margin: 32px 0; padding: 24px 32px; background: var(--white); border-left: 3px solid var(--teal); font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+        .section.dark .pull-quote { background: rgba(255,255,255,0.05); color: var(--white); }
+
+        .triggers-block { background: rgba(19,181,162,0.05); border: 1px solid rgba(19,181,162,0.18); border-radius: 4px; padding: 24px 28px; margin-top: 24px; }
+        .triggers-block .t-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 12px; font-weight: 500; }
+        .triggers-list { list-style: none; padding: 0; margin: 0; }
+        .triggers-list li { font-family: var(--font-mono); font-size: 14px; color: var(--navy); padding: 6px 0; padding-left: 22px; position: relative; }
+        .triggers-list li::before { content: '›'; position: absolute; left: 0; color: var(--teal); font-weight: 700; font-size: 18px; top: 2px; }
+
+        .paste-list { list-style: none; margin-top: 16px; padding: 0; }
+        .paste-list li { padding: 10px 0 10px 28px; position: relative; font-size: 15.5px; color: var(--text-on-dark); line-height: 1.55; }
+        .paste-list li::before { content: '›'; position: absolute; left: 0; color: var(--teal); font-weight: 700; font-size: 18px; top: 6px; }
+
+        .flow-list { list-style: none; counter-reset: flow; margin-top: 20px; }
+        .flow-list li { counter-increment: flow; position: relative; padding: 14px 0 14px 56px; border-bottom: 1px solid rgba(19,37,57,0.08); }
+        .section.dark .flow-list li { border-bottom-color: rgba(255,255,255,0.08); }
+        .flow-list li:last-child { border-bottom: none; }
+        .flow-list li::before { content: counter(flow, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--teal); }
+        .flow-list .flow-title { font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--navy); }
+        .section.dark .flow-list .flow-title { color: var(--white); }
+        .flow-list .flow-desc { font-size: 14.5px; color: var(--slate); margin-top: 4px; line-height: 1.55; }
+        .section.dark .flow-list .flow-desc { color: var(--text-muted-dark); }
+
+        .cat-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 20px; }
+        .cat-card { background: var(--white); border: 1px solid rgba(19,37,57,0.08); border-left: 3px solid var(--teal); padding: 22px 26px; }
+        .cat-card.lang { border-left-color: var(--teal-light); }
+        .cat-card.emph { border-left-color: var(--mint); }
+        .cat-card.sub { border-left-color: var(--warning); }
+        .cat-card.noise { border-left-color: var(--slate); }
+        .cat-card .c-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 6px; }
+        .cat-card.lang .c-label { color: var(--teal-deep); }
+        .cat-card.emph .c-label { color: var(--teal-deep); }
+        .cat-card.sub .c-label { color: var(--warning); }
+        .cat-card.noise .c-label { color: var(--slate); }
+        .cat-card h3 { font-size: 17px; margin-bottom: 8px; }
+        .cat-card .what { font-size: 14.5px; color: var(--slate-deep); margin: 0 0 10px; line-height: 1.55; }
+        .cat-card .response { font-size: 13.5px; color: var(--slate-deep); font-style: italic; padding-top: 10px; border-top: 1px solid rgba(19,37,57,0.06); margin: 0; }
+
+        .note-box { background: rgba(212,163,56,0.08); border-left: 3px solid var(--warning); padding: 20px 24px; margin: 24px 0; }
+        .note-box .note-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warning); margin-bottom: 8px; font-weight: 500; }
+        .note-box p { font-size: 14.5px; color: var(--slate-deep); line-height: 1.6; margin: 0; }
+        .section.dark .note-box { background: rgba(212,163,56,0.1); }
+        .section.dark .note-box p { color: rgba(255,255,255,0.85); }
+
+        .cta-bar { background: var(--navy); color: var(--white); padding: 64px 40px; text-align: center; }
+        .cta-bar .eyebrow { color: var(--teal); margin-bottom: 16px; }
+        .cta-bar h2 { color: var(--white); margin-bottom: 16px; }
+        .cta-bar p { color: var(--text-muted-dark); max-width: 620px; margin: 0 auto 28px; }
+        .cta-button { display: inline-block; padding: 16px 32px; background: var(--teal); color: var(--navy); font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 3px; transition: background 0.15s; }
+        .cta-button:hover { background: var(--teal-light); color: var(--navy); }
+
+        footer { background: var(--navy); color: var(--text-muted-dark); padding: 48px 40px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
+        footer .brand { color: var(--white); font-size: 14px; margin-bottom: 8px; display: block; }
+        footer .footer-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+
+        @media (max-width: 700px) { header { padding: 16px 24px; } .hero { padding: 56px 24px 64px; } .section { padding: 56px 24px; } .cta-bar { padding: 56px 24px; } .hero .meta-pill { flex-direction: column; gap: 8px; padding: 16px 20px; } .hero .meta-pill .sep { display: none; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="brand">Compound Consultant</a>
+        <div class="header-label">Phase 1 — Positioning</div>
+    </header>
+
+    <div class="breadcrumb-wrap">
+        <div class="breadcrumb">
+            <a href="/">Program Map</a>
+            <span>/</span>
+            <a href="/1-0-positioning">Phase 1 — Positioning</a>
+            <span>/</span>
+            1.4 Iterate Your Positioning
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="eyebrow">1.4 · Refine · Recurring Loop</div>
+        <h1>Iterate Your Positioning</h1>
+        <p class="subtitle">Bring your market signal back to the Strategist Coach. Re-invoke the Positioning Architect skill in iteration mode. The coach categorizes the feedback, drafts revisions, and updates your canonical files — without unraveling what's already working.</p>
+        <div class="meta-pill">
+            <span>30–60 min per iteration</span>
+            <span class="sep">·</span>
+            <span>5+ ICP conversations logged first</span>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">What This Is</div>
+            <h2>The same skill. A different mode.</h2>
+            <p>The Positioning Architect skill you ran in 1.2 has an iteration mode built in. You don't install a separate "refinement coach." You re-invoke the same skill — but this time you bring market signal as input, and the skill makes targeted edits to your existing files.</p>
+            <p>The skill categorizes what you bring (language issue, emphasis issue, substantive revision, or noise), helps you decide whether to adjust, makes the minimum viable edit, and updates the version tracker. It protects what's working. It pushes back on weak signals. It tells you when something feels bigger than a refinement and needs a full re-build.</p>
+            <div class="pull-quote">
+                Positioning isn't a document you finish. It's a living system you sharpen. This is the loop that does the sharpening — and it runs as long as you're in market.
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">Before You Run It</div>
+            <h2>One thing must be true.</h2>
+            <p style="color:var(--text-muted-dark);font-size:17px;">You have 5+ ICP conversations logged. With verbatim quotes. With your reads (Hell Yes / Hell No / Grinfucker). Pattern data, not vibes.</p>
+            <p style="color:var(--text-muted-dark);font-size:17px;">If you only have 1–2 conversations, hold. One reaction is an anecdote. Patterns emerge at 5+.</p>
+
+            <div class="note-box">
+                <div class="note-label">If you can't help iterating after every conversation</div>
+                <p>That impulse is uncertainty, not signal. The skill will push back on it — "you've heard this once, let's wait until it shows up two more times." Trust the discipline. The conversations are doing real work even when they don't trigger a change.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">How to Invoke Iteration Mode</div>
+            <h2>Same coach. Different trigger phrase.</h2>
+            <p class="section-intro">Open your Strategist Coach. Use any of these trigger phrases — and immediately paste in your signal.</p>
+
+            <div class="triggers-block">
+                <div class="t-label">Trigger phrases for iteration mode</div>
+                <ul class="triggers-list">
+                    <li>"Iterate my positioning with this feedback"</li>
+                    <li>"Refine my positioning"</li>
+                    <li>"Here's signal from the market"</li>
+                    <li>"Update positioning based on these conversations"</li>
+                </ul>
+            </div>
+
+            <p style="margin-top:32px;">The skill reads your current positioning files (it has them in its knowledge base) and processes the signal against them. You don't need to upload anything new — just paste the feedback into the chat.</p>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">What You Paste In</div>
+            <h2>Raw signal. Not your interpretation.</h2>
+            <p class="section-intro">The skill works best with unfiltered material. Don't summarize. Don't decide what matters before the coach gets to it.</p>
+
+            <ul class="paste-list">
+                <li>Conversation transcripts or detailed notes (verbatim quotes are gold)</li>
+                <li>Specific objections you heard, in the exact words they were said</li>
+                <li>Pricing pushback — and whether you think it's structural or budget</li>
+                <li>Content engagement patterns — which parts of your positioning got reaction, which didn't</li>
+                <li>Referral partners using or struggling with your positioning</li>
+                <li>Sentences the market keeps quoting back to you (those are working)</li>
+                <li>Sentences that consistently fall flat (those need work)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">How the Coach Categorizes</div>
+            <h2>Five categories. Different responses.</h2>
+            <p class="section-intro">Before changing anything, the skill maps your signal to one of five categories. The category determines whether — and how — to adjust.</p>
+
+            <div class="cat-grid">
+                <div class="cat-card">
+                    <div class="c-label">Category 1</div>
+                    <h3>Positive confirmation</h3>
+                    <p class="what">ICP leans in. Content using the Enemy framing gets engagement. Referral partners describe you accurately. Prospects say "that's exactly what I'm dealing with."</p>
+                    <p class="response"><em>Response:</em> "That's your positioning working. Note what specifically resonated. Double down."</p>
+                </div>
+                <div class="cat-card lang">
+                    <div class="c-label">Category 2</div>
+                    <h3>Language-level issue</h3>
+                    <p class="what">Concept is right, specific words don't land. People ask "what do you mean by [term]?" Content gets engagement from the wrong audience. The elevator version doesn't land in conversation.</p>
+                    <p class="response"><em>Response:</em> Adjust phrasing. Don't change the underlying positioning. "What words did THEY use? Let's swap to their language."</p>
+                </div>
+                <div class="cat-card emph">
+                    <div class="c-label">Category 3</div>
+                    <h3>Emphasis issue</h3>
+                    <p class="what">People respond to one part but not others. They remember the Enemy but can't recall the problem. The mechanism interests peers but not buyers. Narrative version works but elevator doesn't.</p>
+                    <p class="response"><em>Response:</em> Reorder the emphasis. Lead with what's landing. "Based on what's resonating, should we restructure which element comes first?"</p>
+                </div>
+                <div class="cat-card sub">
+                    <div class="c-label">Category 4</div>
+                    <h3>Substantive issue</h3>
+                    <p class="what">ICP doesn't match who's showing up. The problem statement doesn't resonate. A different problem gets stronger reactions. POV gets pushback because it's wrong, not because it's contrarian. Mechanism doesn't match what you actually deliver.</p>
+                    <p class="response"><em>Response:</em> Real revision. Identify which circle is off. Make the substantive change. Bump to major version.</p>
+                </div>
+                <div class="cat-card noise">
+                    <div class="c-label">Category 5</div>
+                    <h3>Noise — no change needed</h3>
+                    <p class="what">Feedback from someone outside your ICP. One negative reaction in a sea of positive ones. Pushback from people who ARE the enemy's defenders (this is actually confirmation). Confusion from someone who wasn't paying attention.</p>
+                    <p class="response"><em>Response:</em> "This doesn't warrant a change. Here's why..." Helps you not overreact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">The Loop</div>
+            <h2>What the skill does with your signal.</h2>
+            <p class="section-intro">Once categorized, the skill follows the same five-step pattern every iteration.</p>
+
+            <ol class="flow-list">
+                <li>
+                    <div class="flow-title">Compares signal against current positioning files</div>
+                    <div class="flow-desc">Identifies the specific section the signal contradicts, confirms, or sharpens.</div>
+                </li>
+                <li>
+                    <div class="flow-title">Surfaces the implication clearly</div>
+                    <div class="flow-desc">"This objection tells us your core-problem.md is reading as too vague — they corrected your language with their own."</div>
+                </li>
+                <li>
+                    <div class="flow-title">Drafts a revision and explains the reasoning</div>
+                    <div class="flow-desc">Shows current vs proposed side by side. Doesn't just produce — teaches.</div>
+                </li>
+                <li>
+                    <div class="flow-title">Updates all affected files</div>
+                    <div class="flow-desc">Language change → may update pain-maps, desire-maps, core-problem. ICP change → updates icp.md, may cascade. POV change → updates narrative-spine, may cascade to all others.</div>
+                </li>
+                <li>
+                    <div class="flow-title">Bumps the version + updates the evolution tracker</div>
+                    <div class="flow-desc">v1.0 → v1.1 (language), v1.0 → v1.2 (emphasis), v1.0 → v2.0 (substantive). Tracker captures date, change type, what changed, why, signal strength.</div>
+                </li>
+            </ol>
+
+            <p style="margin-top:28px;">Your job is to bring honest signal, decide what to accept, commit the change. The skill handles the analysis, the rewrite, and the bookkeeping.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">The Rules</div>
+            <h2>Four rules the skill enforces.</h2>
+            <ol style="list-style:none;counter-reset:r;margin-top:20px;">
+                <li style="counter-increment:r;position:relative;padding-left:50px;padding-bottom:18px;font-size:16px;color:var(--slate-deep);line-height:1.6;">
+                    <span style="position:absolute;left:0;top:-2px;font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--teal);">01</span>
+                    <strong>Minimum viable edit.</strong> Change only what the feedback demands. Don't unravel the whole brief because one sentence didn't land.
+                </li>
+                <li style="counter-increment:r;position:relative;padding-left:50px;padding-bottom:18px;font-size:16px;color:var(--slate-deep);line-height:1.6;">
+                    <span style="position:absolute;left:0;top:-2px;font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--teal);">02</span>
+                    <strong>Preserve what's working.</strong> Before changing anything, the skill asks: "What parts ARE working?" Those parts get protected.
+                </li>
+                <li style="counter-increment:r;position:relative;padding-left:50px;padding-bottom:18px;font-size:16px;color:var(--slate-deep);line-height:1.6;">
+                    <span style="position:absolute;left:0;top:-2px;font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--teal);">03</span>
+                    <strong>One change at a time.</strong> If you have feedback on multiple areas, address them one at a time. Changing everything at once makes it impossible to know what helped.
+                </li>
+                <li style="counter-increment:r;position:relative;padding-left:50px;padding-bottom:18px;font-size:16px;color:var(--slate-deep);line-height:1.6;">
+                    <span style="position:absolute;left:0;top:-2px;font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--teal);">04</span>
+                    <strong>Track every change.</strong> No silent edits. The Positioning Evolution Tracker captures what changed, when, and why.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">When Iteration Isn't Enough</div>
+            <h2>The skill will tell you when something is bigger.</h2>
+            <p class="section-intro">Sometimes market signal points to a fundamental problem — not a refinement. The skill will name this directly and recommend a fresh build pass.</p>
+
+            <p>Escalation triggers:</p>
+            <ul style="list-style:none;padding:0;margin:16px 0;">
+                <li style="padding:8px 0 8px 28px;position:relative;font-size:15.5px;color:var(--text-on-dark);line-height:1.55;"><span style="position:absolute;left:0;color:var(--teal);">→</span> You've made 3+ substantive changes and the brief feels incoherent</li>
+                <li style="padding:8px 0 8px 28px;position:relative;font-size:15.5px;color:var(--text-on-dark);line-height:1.55;"><span style="position:absolute;left:0;color:var(--teal);">→</span> Market feedback consistently suggests the wrong ICP</li>
+                <li style="padding:8px 0 8px 28px;position:relative;font-size:15.5px;color:var(--text-on-dark);line-height:1.55;"><span style="position:absolute;left:0;color:var(--teal);">→</span> The problem that resonates is fundamentally different from the one in the brief</li>
+                <li style="padding:8px 0 8px 28px;position:relative;font-size:15.5px;color:var(--text-on-dark);line-height:1.55;"><span style="position:absolute;left:0;color:var(--teal);">→</span> You've lost confidence in the positioning entirely</li>
+                <li style="padding:8px 0 8px 28px;position:relative;font-size:15.5px;color:var(--text-on-dark);line-height:1.55;"><span style="position:absolute;left:0;color:var(--teal);">→</span> You're changing positioning after every single conversation (signal of deeper uncertainty)</li>
+            </ul>
+
+            <p style="margin-top:18px;">If triggered, the skill recommends: "Step back. This might need a fresh run through [POV / Problem / Person] rather than incremental edits. Re-invoke this skill from Phase [X]."</p>
+
+            <div class="pull-quote">
+                Knowing when something is bigger than a tweak protects you from the death spiral of endless refinement. Trust the skill's escalation.
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">After Iteration</div>
+            <h2>Save updates. Re-test in the market.</h2>
+            <p>After every iteration session:</p>
+            <ol style="margin:18px 0 18px 22px;color:var(--slate-deep);font-size:16px;line-height:1.7;">
+                <li>Copy the updated file(s) from the code blocks</li>
+                <li>Replace the previous versions in your <code>/Compound Consultant OS</code> folder</li>
+                <li>Re-upload to your Strategist Coach project (this keeps the coach reading the latest version)</li>
+                <li>Take the updated positioning back into market conversations</li>
+                <li>Log signal. Bring it back to iteration mode when patterns emerge again</li>
+            </ol>
+            <p style="margin-top:20px;">The loop runs as long as you're in market. v1.0 → v1.1 → v1.2 → v2.0 → and forward. Each version is sharper than the last because each is grounded in real signal, not assumptions.</p>
+        </div>
+    </section>
+
+    <section class="cta-bar">
+        <div class="eyebrow">Phase 1 Complete</div>
+        <h2>You have tested, iterated positioning.</h2>
+        <p>Diagnostic done. Positioning built. Tested in market. Iterated against signal. The foundation is solid. Phase 2 builds the commercial assets — Offer Doc, Sales Page — directly on top of this foundation.</p>
+        <a href="/2-0-package" class="cta-button">Phase 2 — Package →</a>
+    </section>
+
+    <footer>
+        <span class="brand">Compound Consultant</span>
+        <div class="footer-label">1.4 — Iterate Your Positioning</div>
+    </footer>
+
+</body>
+</html>

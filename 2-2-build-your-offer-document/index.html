@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>2.2 The Anatomy of an Offer | Compound Consultant</title>
+    <meta name="description" content="What makes an offer document strong. The principles, the failure modes, the value equation, the iteration loop. Read this before you build.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #132539;
+            --paper: #F9F8F5;
+            --teal: #13B5A2;
+            --teal-deep: #12917E;
+            --teal-light: #5DCFC1;
+            --mint: #D5F0EC;
+            --slate: #6B7A8D;
+            --slate-deep: #2A3F54;
+            --white: #FFFFFF;
+            --warning: #D4A338;
+
+            --text-on-dark: rgba(255,255,255,0.92);
+            --text-muted-dark: rgba(255,255,255,0.72);
+            --text-faint-dark: rgba(255,255,255,0.55);
+
+            --font-display: 'Sora', Arial, sans-serif;
+            --font-body: 'Inter', Arial, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --max-content: 880px;
+            --max-wide: 1080px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { background: var(--paper); color: var(--navy); }
+        body {
+            font-family: var(--font-body);
+            font-size: 17px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--teal); text-decoration: none; }
+        a:hover { color: var(--teal-deep); }
+
+        /* Header */
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(19,37,57,0.08);
+        }
+        .brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--navy);
+        }
+        .header-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb-wrap {
+            max-width: var(--max-wide);
+            margin: 0 auto;
+            padding: 28px 40px 0;
+        }
+        .breadcrumb {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--slate);
+        }
+        .breadcrumb a { color: var(--slate); }
+        .breadcrumb a:hover { color: var(--navy); }
+        .breadcrumb span { margin: 0 8px; }
+
+        /* Hero */
+        .hero {
+            background: var(--navy);
+            color: var(--white);
+            padding: 80px 40px 96px;
+            text-align: center;
+            margin-top: 32px;
+        }
+        .hero .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(40px, 6vw, 60px);
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+        .hero .subtitle {
+            font-size: 19px;
+            color: var(--text-muted-dark);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .hero .meta-pill {
+            display: inline-flex;
+            gap: 24px;
+            margin-top: 32px;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-on-dark);
+        }
+        .hero .meta-pill .sep { color: rgba(255,255,255,0.4); }
+
+        /* Section base */
+        .section { padding: 88px 40px; }
+        .section.dark { background: var(--navy); color: var(--white); }
+        .section.dark h2, .section.dark h3 { color: var(--white); }
+        .section.dark .eyebrow { color: var(--teal); }
+        .section-inner { max-width: var(--max-content); margin: 0 auto; }
+        .section-inner.wide { max-width: var(--max-wide); }
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--slate);
+            margin-bottom: 16px;
+        }
+        h2 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(30px, 4vw, 40px);
+            line-height: 1.15;
+            color: var(--navy);
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+        .section-intro {
+            font-size: 18px;
+            color: var(--slate);
+            max-width: 720px;
+            margin-bottom: 36px;
+            line-height: 1.65;
+        }
+        .section.dark .section-intro { color: var(--text-muted-dark); }
+        h3 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1.3;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+        p { margin-bottom: 18px; }
+        p:last-child { margin-bottom: 0; }
+        .section.dark p { color: var(--text-on-dark); }
+        strong { font-weight: 600; color: var(--navy); }
+        .section.dark strong { color: var(--white); }
+        em { font-style: italic; }
+        code {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            background: rgba(19,181,162,0.08);
+            color: var(--teal-deep);
+            padding: 1px 6px;
+            border-radius: 3px;
+        }
+        .section.dark code {
+            background: rgba(93,207,193,0.12);
+            color: var(--teal-light);
+        }
+
+        /* Pull quote */
+        .pull-quote {
+            margin: 32px 0;
+            padding: 24px 32px;
+            background: var(--white);
+            border-left: 3px solid var(--teal);
+            font-family: var(--font-display);
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.4;
+        }
+        .section.dark .pull-quote {
+            background: rgba(255,255,255,0.05);
+            color: var(--white);
+        }
+
+        /* Three-things grid (commitment device / memory artifact / market sensor) */
+        .three-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 8px;
+        }
+        .three-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 28px 26px;
+            border-top: 3px solid var(--teal);
+        }
+        .three-card.c2 { border-top-color: var(--teal-light); }
+        .three-card.c3 { border-top-color: var(--mint); }
+        .three-card .three-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 8px;
+        }
+        .three-card.c2 .three-label { color: var(--teal-light); }
+        .three-card.c3 .three-label { color: var(--mint); }
+        .three-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+        .three-card p {
+            font-size: 15px;
+            color: var(--text-muted-dark);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Spine sub-headings */
+        .spine-subhead {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal-deep);
+            margin: 40px 0 16px;
+        }
+
+        /* Anatomy cards (load-bearing four) */
+        .anatomy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 8px;
+        }
+        .anatomy-card {
+            background: var(--white);
+            border: 1px solid rgba(19,37,57,0.08);
+            border-radius: 4px;
+            padding: 28px 30px;
+        }
+        .anatomy-card .a-num {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 26px;
+            color: var(--teal);
+            margin-bottom: 4px;
+        }
+        .anatomy-card h3 { margin-bottom: 4px; }
+        .anatomy-card .a-sub {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--slate);
+            margin-bottom: 14px;
+        }
+        .anatomy-card p {
+            font-size: 15px;
+            color: var(--slate-deep);
+            margin: 0;
+        }
+
+        /* Smaller cards for mechanical/connective */
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 8px;
+        }
+        .mini-grid.two { grid-template-columns: repeat(2, 1fr); }
+        .mini-card {
+            background: rgba(19,181,162,0.04);
+            border: 1px solid rgba(19,181,162,0.15);
+            padding: 20px 22px;
+        }
+        .mini-card .m-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 4px;
+        }
+        .mini-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .mini-card p {
+            font-size: 14px;
+            color: var(--slate-deep);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .compression-card {
+            background: var(--navy);
+            color: var(--white);
+            padding: 28px 30px;
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+        .compression-card .c-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal-light);
+            flex-shrink: 0;
+        }
+        .compression-card h3 {
+            font-size: 18px;
+            color: var(--white);
+            margin: 0;
+        }
+        .compression-card p {
+            font-size: 14.5px;
+            color: var(--text-muted-dark);
+            margin: 4px 0 0;
+        }
+        .compression-card .c-text { flex: 1; }
+
+        /* Value equation box */
+        .equation-box {
+            background: rgba(19,181,162,0.08);
+            border: 1px solid rgba(19,181,162,0.25);
+            border-radius: 4px;
+            padding: 28px 30px;
+            margin: 28px 0;
+            text-align: center;
+        }
+        .equation-box.dark {
+            background: rgba(93,207,193,0.06);
+            border-color: rgba(93,207,193,0.2);
+        }
+        .equation-box .eq-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal-deep);
+            margin-bottom: 12px;
+        }
+        .section.dark .equation-box .eq-label { color: var(--teal-light); }
+        .equation-box .eq-formula {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--navy);
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+        .section.dark .equation-box .eq-formula { color: var(--white); }
+
+        /* Failure modes problems list */
+        .problems-list {
+            list-style: none;
+            counter-reset: problemcount;
+            margin-top: 12px;
+        }
+        .problems-list li {
+            counter-increment: problemcount;
+            position: relative;
+            padding-left: 60px;
+            padding-bottom: 28px;
+        }
+        .problems-list li::before {
+            content: counter(problemcount, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--teal);
+        }
+        .problems-list .p-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 17px;
+            margin-bottom: 4px;
+            color: var(--white);
+        }
+        .problems-list .p-body {
+            font-size: 15px;
+            color: var(--text-muted-dark);
+            line-height: 1.6;
+        }
+        .problems-list .p-symptom {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            color: var(--warning);
+            margin-top: 8px;
+            display: block;
+        }
+
+        /* Lever check (value equation stress test) */
+        .lever-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        .lever-list li {
+            padding: 12px 0 12px 28px;
+            position: relative;
+            font-size: 15.5px;
+            color: var(--text-on-dark);
+            line-height: 1.6;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .lever-list li:first-child { border-top: none; }
+        .lever-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: 700;
+        }
+        .lever-list li strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* Pricing rules */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .rule-row {
+            background: var(--white);
+            border: 1px solid rgba(19,37,57,0.08);
+            border-left: 3px solid var(--teal);
+            padding: 20px 24px;
+        }
+        .rule-row .r-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal-deep);
+            margin-bottom: 6px;
+        }
+        .rule-row h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+        .rule-row p {
+            font-size: 15px;
+            color: var(--slate-deep);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Guarantee questions */
+        .guarantee-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 20px;
+        }
+        .g-card {
+            background: var(--white);
+            border: 1px solid rgba(19,37,57,0.08);
+            border-top: 3px solid var(--warning);
+            padding: 22px 24px;
+        }
+        .g-card .g-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--warning);
+            margin-bottom: 6px;
+        }
+        .g-card h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .g-card p {
+            font-size: 13.5px;
+            color: var(--slate-deep);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* Flow list (iteration) */
+        .flow-list {
+            list-style: none;
+            counter-reset: flow;
+            margin-top: 20px;
+        }
+        .flow-list li {
+            counter-increment: flow;
+            position: relative;
+            padding: 14px 0 14px 56px;
+            border-bottom: 1px solid rgba(19,37,57,0.08);
+        }
+        .section.dark .flow-list li { border-bottom-color: rgba(255,255,255,0.08); }
+        .flow-list li:last-child { border-bottom: none; }
+        .flow-list li::before {
+            content: counter(flow, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: 14px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--teal);
+        }
+        .flow-list .flow-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--navy);
+        }
+        .section.dark .flow-list .flow-title { color: var(--white); }
+        .flow-list .flow-desc {
+            font-size: 14.5px;
+            color: var(--slate);
+            margin-top: 4px;
+            line-height: 1.55;
+        }
+        .section.dark .flow-list .flow-desc { color: var(--text-muted-dark); }
+
+        /* Downstream feeds list */
+        .feeds-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+        .feeds-list li {
+            padding: 14px 0 14px 32px;
+            position: relative;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-on-dark);
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .feeds-list li:first-child { border-top: none; }
+        .feeds-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: 700;
+        }
+        .feeds-list li strong { color: var(--white); font-weight: 600; }
+
+        /* Prereq list */
+        .prereq-list {
+            list-style: none;
+            margin-top: 16px;
+            padding: 0;
+        }
+        .prereq-list li {
+            padding: 8px 0 8px 28px;
+            position: relative;
+            font-size: 16px;
+            color: var(--slate-deep);
+            line-height: 1.55;
+        }
+        .section.dark .prereq-list li { color: var(--text-on-dark); }
+        .prereq-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        /* Note box */
+        .note-box {
+            background: rgba(212,163,56,0.08);
+            border-left: 3px solid var(--warning);
+            padding: 20px 24px;
+            margin: 24px 0;
+        }
+        .note-box .note-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--warning);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .note-box p {
+            font-size: 14.5px;
+            color: var(--slate-deep);
+            line-height: 1.6;
+            margin: 0;
+        }
+        .section.dark .note-box { background: rgba(212,163,56,0.1); }
+        .section.dark .note-box p { color: rgba(255,255,255,0.85); }
+
+        /* CTA bar */
+        .cta-bar {
+            background: var(--navy);
+            color: var(--white);
+            padding: 64px 40px;
+            text-align: center;
+        }
+        .cta-bar .eyebrow {
+            color: var(--teal);
+            margin-bottom: 16px;
+        }
+        .cta-bar h2 {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .cta-bar p {
+            color: var(--text-muted-dark);
+            max-width: 620px;
+            margin: 0 auto 28px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--teal);
+            color: var(--navy);
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-radius: 3px;
+            transition: background 0.15s;
+        }
+        .cta-button:hover {
+            background: var(--teal-light);
+            color: var(--navy);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--text-muted-dark);
+            padding: 48px 40px;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        footer .brand {
+            color: var(--white);
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        footer .footer-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .three-grid { grid-template-columns: 1fr; }
+            .anatomy-grid { grid-template-columns: 1fr; }
+            .mini-grid, .mini-grid.two { grid-template-columns: 1fr; }
+            .guarantee-grid { grid-template-columns: 1fr; }
+            .compression-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+        }
+        @media (max-width: 700px) {
+            header { padding: 16px 24px; }
+            .hero { padding: 56px 24px 64px; }
+            .section { padding: 56px 24px; }
+            .cta-bar { padding: 56px 24px; }
+            .hero .meta-pill { flex-direction: column; gap: 8px; padding: 16px 20px; }
+            .hero .meta-pill .sep { display: none; }
+            .equation-box .eq-formula { font-size: 17px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="brand">Compound Consultant</a>
+        <div class="header-label">Phase 2 — Package</div>
+    </header>
+
+    <div class="breadcrumb-wrap">
+        <div class="breadcrumb">
+            <a href="/">Program Map</a>
+            <span>/</span>
+            <a href="/2-0-package">Phase 2 — Package</a>
+            <span>/</span>
+            2.2 The Anatomy of an Offer
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="eyebrow">2.2 · Read First · Phase 2</div>
+        <h1>The Anatomy of an Offer</h1>
+        <p class="subtitle">Your offer document is not a sales asset. It's the protocol your business runs on — the single artifact that forces your hardest commercial decisions, feeds every downstream asset, and gets revised every time the market teaches you something.</p>
+        <div class="meta-pill">
+            <span>12 min read</span>
+            <span class="sep">·</span>
+            <span>Read before you run the Offer Architect skill</span>
+        </div>
+    </section>
+
+    <!-- THE OPENING ARGUMENT -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">The Reality</div>
+            <h2>Most consultants don't have an offer. They have a vibe.</h2>
+            <p>They have a rate card, a rough sense of what they do, and a proposal they rebuild from scratch every time someone asks. That's not an offer. That's improvisation — and improvisation doesn't compound.</p>
+            <p>The offer document is where improvisation ends. It's the precise, written articulation of what you sell: who it's for, what problem it solves, what specifically changes when someone works with you, how the engagement works, what it costs, what happens next. One document. Complete. Committed.</p>
+            <p>If you skip this work, everything downstream is guesswork. Your sales page will be vague because your offer is vague. Your outreach will be soft because your promise is soft. Your AI coaches will produce average copy because the source they're reading from is average. <strong>The offer document is the bottleneck — fix it and the entire system unlocks.</strong></p>
+        </div>
+    </section>
+
+    <!-- THREE THINGS AT ONCE -->
+    <section class="section dark">
+        <div class="section-inner wide">
+            <div class="eyebrow">The Frame</div>
+            <h2>The offer document is three things at once.</h2>
+            <p class="section-intro">Treating it as a sales document is the first mistake. It is — simultaneously — a commitment device, a memory artifact, and a market sensor. Each role demands different things from the document, and each one is non-negotiable.</p>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="three-label">Role 01</div>
+                    <h3>A commitment device</h3>
+                    <p>It forces decisions you've been avoiding — the outcome you're promising, the price you'll defend, the buyer you're choosing and the ten others you're rejecting. Most consultants stay financially mediocre because they refuse to commit. The document makes commitment unavoidable.</p>
+                </div>
+                <div class="three-card c2">
+                    <div class="three-label">Role 02</div>
+                    <h3>A memory artifact</h3>
+                    <p>It is the single source of truth your AI system reads. Every coach pulls from this file. If <code>offer.md</code> is sharp, your coaches produce sharp work. If it's mush, no amount of prompt engineering saves you.</p>
+                </div>
+                <div class="three-card c3">
+                    <div class="three-label">Role 03</div>
+                    <h3>A market sensor</h3>
+                    <p>It is not built once. v1 is almost always wrong. The document updates when ICP conversations contradict your assumptions, when pricing meets resistance you didn't predict, when a section gets quoted back to you so often it should be promoted. The offer document is alive.</p>
+                </div>
+            </div>
+
+            <p style="margin-top:36px;">The mistake most consultants make is treating it like a one-time deliverable. Write it, save it, move on. That kills the compounding. The whole point is that this document evolves — and propagates those changes through your system automatically.</p>
+        </div>
+    </section>
+
+    <!-- THE SPINE -->
+    <section class="section">
+        <div class="section-inner wide">
+            <div class="eyebrow">The Spine</div>
+            <h2>What's load-bearing and what's derivative.</h2>
+            <p class="section-intro">The offer document has ten sections. They are not equal. Four are load-bearing — get these wrong and the document collapses. Three are mechanical. Two are connective tissue. One sits on top and compresses everything below.</p>
+
+            <div class="spine-subhead">The Load-Bearing Four — spend 80% of your build time here</div>
+
+            <div class="equation-box">
+                <div class="eq-label">The underlying logic</div>
+                <div class="eq-formula">Value = (Dream Outcome × Perceived Likelihood) ÷ (Time Delay × Effort &amp; Sacrifice)</div>
+            </div>
+            <p>Outcome Promise raises the <em>Dream Outcome</em>. Real Problem and Differentiator raise <em>Perceived Likelihood</em>. How It Works compresses <em>Time Delay</em>. Delivery Mechanics minimizes <em>Effort &amp; Sacrifice</em>. Every section in the document should move at least one of those four levers. If a section doesn't — cut it or sharpen it until it does.</p>
+
+            <div class="anatomy-grid" style="margin-top:24px;">
+                <div class="anatomy-card">
+                    <div class="a-num">02</div>
+                    <h3>Ideal Buyer</h3>
+                    <div class="a-sub">Not demographics — situation</div>
+                    <p>Who is this person at the moment they become a buyer? What's happening in their world, what have they already tried, what does success specifically mean to them? Your <code>icp.md</code> comes alive here in commercial language. If you can't picture one specific person reading this and saying "that's me," it's not sharp enough.</p>
+                </div>
+                <div class="anatomy-card">
+                    <div class="a-num">03</div>
+                    <h3>The Real Problem</h3>
+                    <div class="a-sub">Two layers — surface and structural</div>
+                    <p>The surface problem the buyer thinks they have, and the underlying problem actually causing it. Most buyers misdiagnose. Your offer document names what they actually feel but can't articulate. This is the section that makes them feel seen.</p>
+                </div>
+                <div class="anatomy-card">
+                    <div class="a-num">04</div>
+                    <h3>The Outcome Promise</h3>
+                    <div class="a-sub">Concrete markers, not adjectives</div>
+                    <p>What changes specifically. Not "clarity" or "confidence" — markers. What does the client have, say, and do differently after working with you? If you can't make this concrete, the promise is too vague to sell — and your AI coaches will hedge in everything they generate downstream.</p>
+                </div>
+                <div class="anatomy-card">
+                    <div class="a-num">07</div>
+                    <h3>Your Differentiator</h3>
+                    <div class="a-sub">Mechanism, not adjective</div>
+                    <p>Not "I'm more experienced" or "I care more." A specific structural difference — a mechanism, sequence, or approach a competitor couldn't copy without changing how they actually deliver. If a competitor reads it and says "we do that too" — it's not a differentiator. It's marketing.</p>
+                </div>
+            </div>
+
+            <div class="spine-subhead">The Mechanical Three — write efficiently once the load-bearing four are clear</div>
+
+            <div class="mini-grid">
+                <div class="mini-card">
+                    <div class="m-num">Section 05</div>
+                    <h3>How It Works</h3>
+                    <p>Phases, timeline, structure. Prospects need to visualize the journey, not just the destination.</p>
+                </div>
+                <div class="mini-card">
+                    <div class="m-num">Section 06</div>
+                    <h3>Delivery Mechanics</h3>
+                    <p>Format written as outcomes, not features. Not "biweekly 60-minute calls" — "you never make a major positioning decision without direct feedback."</p>
+                </div>
+                <div class="mini-card">
+                    <div class="m-num">Section 08</div>
+                    <h3>Investment</h3>
+                    <p>Price, payment options, guarantee. The section most consultants underweight — see Pricing below.</p>
+                </div>
+            </div>
+
+            <div class="spine-subhead">The Connective Two — don't bury; surface honestly</div>
+
+            <div class="mini-grid two">
+                <div class="mini-card">
+                    <div class="m-num">Section 10 — Promote it</div>
+                    <h3>Founder Connection</h3>
+                    <p>Not a bio. The evidence that you've lived in the problem and that's why you can solve it. If it reads like a generic "about me," you've buried the strongest trust signal in the document. Surface it.</p>
+                </div>
+                <div class="mini-card">
+                    <div class="m-num">Section 09</div>
+                    <h3>Call to Action</h3>
+                    <p>One action. No ambiguity. "Book a 45-minute positioning audit" is a CTA. "Get in touch" is a wish.</p>
+                </div>
+            </div>
+
+            <div class="spine-subhead">The Compression on Top — write this last</div>
+
+            <div class="compression-card">
+                <div class="c-num">Section 01</div>
+                <div class="c-text">
+                    <h3>One-Line Offer Statement</h3>
+                    <p>Who you help, what problem you solve, what outcome you produce, in what timeframe. One sentence. Written last — it's the compression of the work below. If you can't write it cleanly, the offer underneath isn't clear yet. Go back.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAILURE MODES -->
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">The Failure Modes</div>
+            <h2>What a weak offer document looks like.</h2>
+            <p class="section-intro">The strongest way to know what good looks like is to know what bad looks like. Five common ways offer documents fail. If your draft has any of these, the work isn't done — the Offer Architect skill is built to catch them, but you should also recognize them yourself.</p>
+
+            <ol class="problems-list">
+                <li>
+                    <div class="p-title">The capability dump</div>
+                    <div class="p-body">Lists what you can do instead of what the buyer gets. Reads like a services brochure.</div>
+                    <span class="p-symptom">Symptom — the words "we offer," "we provide," "our approach" appear repeatedly</span>
+                </li>
+                <li>
+                    <div class="p-title">The vague promise</div>
+                    <div class="p-body">Outcome section uses words like clarity, confidence, alignment, transformation. No markers. No before/after.</div>
+                    <span class="p-symptom">Symptom — every consultant in your category could copy this section without changing it</span>
+                </li>
+                <li>
+                    <div class="p-title">The undifferentiated mechanism</div>
+                    <div class="p-body">Differentiator section says you're more experienced, more rigorous, more thoughtful. Adjectives, not structure.</div>
+                    <span class="p-symptom">Symptom — a competitor reads it and says "we do all that too"</span>
+                </li>
+                <li>
+                    <div class="p-title">The unpriceable offer</div>
+                    <div class="p-body">Investment section apologizes ("starting at," "depending on scope," "let's discuss") because the scope itself isn't bounded enough to price.</div>
+                    <span class="p-symptom">Symptom — every prospect gets a custom quote</span>
+                </li>
+                <li>
+                    <div class="p-title">The buried founder</div>
+                    <div class="p-body">Section 10 reads like a generic bio. Where you went to school, jobs you held, awards you won. None of it explains why you specifically are the person to solve this problem.</div>
+                    <span class="p-symptom">Symptom — the section could be on any consultant's website</span>
+                </li>
+            </ol>
+
+            <h3 style="margin-top:40px;color:var(--white);font-size:22px;">The value equation stress test</h3>
+            <p style="margin-top:8px;">Once your draft is complete, run every section through this filter: which lever does this section move?</p>
+
+            <ul class="lever-list">
+                <li><strong>Dream Outcome</strong> — does it make the result bigger, more specific, more emotionally vivid?</li>
+                <li><strong>Perceived Likelihood</strong> — does it make the buyer more confident they will personally get the result?</li>
+                <li><strong>Time Delay</strong> — does it show a faster path, a tighter timeline, a quicker first win?</li>
+                <li><strong>Effort &amp; Sacrifice</strong> — does it show what they don't have to do, learn, manage, or sacrifice?</li>
+            </ul>
+
+            <p style="margin-top:24px;">Every section should answer at least one. Strong sections answer two. If a section doesn't move any of the four levers, it's padding. Cut it.</p>
+
+            <div class="pull-quote">
+                Most consulting offers max out one lever (usually outcome) and ignore the other three. That's why they get compared on price.
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">Pricing</div>
+            <h2>The part most programs dodge.</h2>
+            <p class="section-intro">The current consulting orthodoxy says "price plainly, without apology." That's true — but it skips the hard part: how do you arrive at a price you can actually defend? Three rules.</p>
+
+            <div class="rules-grid">
+                <div class="rule-row">
+                    <div class="r-label">Rule 01</div>
+                    <h3>Price from outcome value, not delivery cost.</h3>
+                    <p>What is the buyer's life worth after the outcome lands? If your work helps a fractional CFO land two new clients at $8K/mo each, the engagement is worth a multiple of that — not "my hours times my rate." If you can't quantify the value of the outcome, your outcome promise (Section 4) isn't concrete enough. Go back.</p>
+                </div>
+                <div class="rule-row">
+                    <div class="r-label">Rule 02</div>
+                    <h3>The defensibility test.</h3>
+                    <p>Imagine the prospect saying "that's too expensive" and you having to respond. If you can defend the price by pointing at what changes for them — confident yes. If you have to defend it by listing what you do — your price is anchored in the wrong place. Reanchor.</p>
+                </div>
+                <div class="rule-row">
+                    <div class="r-label">Rule 03</div>
+                    <h3>Confident average beats apologetic premium.</h3>
+                    <p>A consultant who confidently prices at $15K closes more than one who anxiously prices at $30K. If the price feels too high to defend, lower it until you can defend it without flinching, build the proof, then raise it. The market will tell you when.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top:40px;font-size:22px;">Risk reversal — the part most consultants leave blank.</h3>
+            <p style="margin-top:8px;">Most consulting offer documents either skip the guarantee entirely or write something soft like "we'll work until you're satisfied." That's not a guarantee. That's a wish.</p>
+            <p>A real guarantee answers three questions:</p>
+
+            <div class="guarantee-grid">
+                <div class="g-card">
+                    <div class="g-num">Q1 — Structure</div>
+                    <h3>Outcome, deliverable, or effort?</h3>
+                    <p>Outcome guarantees have the highest pull but require an outcome you can defend. Deliverable guarantees are easier to commit to. Effort guarantees are the weakest — avoid them.</p>
+                </div>
+                <div class="g-card">
+                    <div class="g-num">Q2 — Trigger</div>
+                    <h3>What activates it?</h3>
+                    <p>A clear, measurable event. Not "if you're not happy." Vague triggers create disputes; specific triggers create trust.</p>
+                </div>
+                <div class="g-card">
+                    <div class="g-num">Q3 — Consequence</div>
+                    <h3>What happens when it triggers?</h3>
+                    <p>Refund, continued work, escalated access, a credit. Match the consequence to the size of the engagement and your actual confidence in delivering.</p>
+                </div>
+            </div>
+
+            <p style="margin-top:28px;">The point isn't to invent a marketing gimmick. It's to force you to commit on paper to what you're willing to stake. If you can't write a specific guarantee with a specific trigger and a specific consequence, your offer isn't ready to sell — because you're not yet confident in the result you're promising. Fix the offer until you are.</p>
+
+            <div class="note-box">
+                <div class="note-label">A counterintuitive note</div>
+                <p>For premium consulting buyers, an unconditional money-back guarantee often <em>reduces</em> trust ("how do you make money giving refunds?"). A conditional, structural guarantee — tied to outcomes you stake your reputation on — is what high-trust buyers want to see. Quiet confidence, not loud reversal.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRUCTURE FOR AI -->
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">The Compound Move</div>
+            <h2>Structure it for AI, not just for humans.</h2>
+            <p class="section-intro">This is the section that separates a Compound offer document from a generic one. Your offer document is read by AI coaches more often than by humans. That means it needs to be machine-parseable, not just well-written. Treat it like a structured file, not a memo.</p>
+
+            <h3 style="color:var(--white);margin-top:8px;">Use explicit section markers</h3>
+            <p>Each of the ten sections gets a heading in the same format every time. Coaches pull from sections by name — don't bury your differentiator inside a paragraph labeled "approach" and expect a coach to find it.</p>
+
+            <h3 style="color:var(--white);margin-top:28px;">Use defined fields where possible</h3>
+            <p>Price as a number. Timeline as a number of weeks. Outcome markers as a bulleted list. Coaches handle structured data better than prose for these. Keep prose for the load-bearing four where nuance matters.</p>
+
+            <h3 style="color:var(--white);margin-top:28px;">The agent test</h3>
+            <p>Once your offer doc is written, open a fresh chat with your Strategist Coach. Don't paste anything else. Ask: <em>"Who is the ideal buyer for this offer? What does success look like for them? What's our unique mechanism?"</em> If the coach can answer cleanly from the document alone — your structure is good. If the coach hedges or asks questions — your document has gaps.</p>
+
+            <div class="pull-quote" style="margin-top:32px;">
+                Keep a changelog at the bottom of the file. v1 dated. v2 with what changed and why. The coaches read the latest version, but the changelog is your reasoning trail — and tells you which assumptions the market has already corrected.
+            </div>
+        </div>
+    </section>
+
+    <!-- ITERATION LOOP -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">The Iteration Loop</div>
+            <h2>Your Strategist Coach is the engine.</h2>
+            <p class="section-intro">v1 is wrong. Expect it. Plan for it. You don't iterate the offer document alone — the Offer Architect skill, running inside your Strategist Coach, is the iteration engine. The workflow is simple: feedback comes in from the market, you paste it into the coach, the coach helps you decide what changes and why.</p>
+
+            <h3 style="margin-top:8px;">What you paste in</h3>
+            <ul class="prereq-list">
+                <li>Transcripts or notes from ICP conversations</li>
+                <li>Objections from sales calls — verbatim if possible</li>
+                <li>Pricing pushback — and whether it's structural or just budget</li>
+                <li>Sections of the offer doc that prospects react to (or ignore)</li>
+                <li>Sentences that keep getting quoted back to you</li>
+                <li>Sentences the coach itself keeps pushing back on</li>
+            </ul>
+
+            <h3 style="margin-top:32px;">What the coach does with it</h3>
+            <ol class="flow-list">
+                <li>
+                    <div class="flow-title">Compares the signal against the current offer doc</div>
+                    <div class="flow-desc">Identifies the specific section the signal contradicts, confirms, or sharpens.</div>
+                </li>
+                <li>
+                    <div class="flow-title">Surfaces the implication clearly</div>
+                    <div class="flow-desc">"This objection tells us Section 4 is reading as too vague — buyers can't quantify the value."</div>
+                </li>
+                <li>
+                    <div class="flow-title">Drafts a revision and explains the reasoning</div>
+                    <div class="flow-desc">Shows what changed and why. Doesn't just produce — teaches.</div>
+                </li>
+                <li>
+                    <div class="flow-title">Flags downstream impact</div>
+                    <div class="flow-desc">If the Offer Doc section changes, the Sales Page beat likely needs an update. The coach tells you which beat and why.</div>
+                </li>
+            </ol>
+
+            <p style="margin-top:28px;">Your job is to bring honest market signal in, decide what to accept, and commit the change. The coach handles the analysis and the rewrite. When you update, update with intent. Date it. Note what changed. Reupload to your project.</p>
+
+            <div class="pull-quote">
+                Most consultants iterate piecemeal — they tweak a LinkedIn post, rewrite an email, revise a proposal — and nothing compounds because the source never changes. You iterate at the source, with the coach. The system propagates.
+            </div>
+        </div>
+    </section>
+
+    <!-- DOWNSTREAM FEEDS -->
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">The Propagation</div>
+            <h2>How the offer document feeds everything downstream.</h2>
+            <p class="section-intro">Once <code>offer.md</code> exists, it becomes the source for every other asset. One source. Many derivatives. Update the source — every derivative gets sharper.</p>
+
+            <ul class="feeds-list">
+                <li><strong>Sales Page</strong> — the 11-beat sales page is a reorganization of the offer document for a buyer-facing audience. Every beat maps to a section. Nothing on the sales page exists that isn't in the offer document first.</li>
+                <li><strong>Outreach Messages</strong> — the One-Liner and the Real Problem become the basis for every cold and warm message. You stop improvising.</li>
+                <li><strong>Discovery Call</strong> — the offer document is your call structure. You diagnose match, name the real problem, walk through how it works. The call follows the document.</li>
+                <li><strong>Proposals</strong> — fast, because they're the offer document repackaged for a specific prospect.</li>
+                <li><strong>Content</strong> — every Phase 3 piece is a fragment of the offer document distributed across channels.</li>
+                <li><strong>AI OS</strong> — every coach reads from it. Sharpen the source, sharpen the whole stack.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- BEFORE YOU BUILD IT -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">Before You Build It</div>
+            <h2>Two things must be ready.</h2>
+
+            <h3 style="margin-top:8px;">Phase 1 files current and uploaded</h3>
+            <p>The Strategist Coach reads <code>positioning.md</code>, <code>icp.md</code>, <code>core-problem.md</code>, <code>pain-maps.md</code>, <code>desire-maps.md</code>, and <code>narrative-spine.md</code> before the Offer Architect skill touches the offer document. Vague Phase 1 files produce a vague offer document. Sharpen them first.</p>
+
+            <h3 style="margin-top:24px;">Expect to be pushed</h3>
+            <p>The Offer Architect skill rejects answers that are too safe, too broad, too capability-focused. That friction is the point. A comfortable offer document is a weak offer document.</p>
+
+            <div class="note-box">
+                <div class="note-label">When you're done</div>
+                <p>Save the output as <code style="font-family:var(--font-mono);font-size:13px;background:rgba(19,181,162,0.1);color:var(--teal-deep);padding:1px 6px;border-radius:3px;">offer.md</code> in your knowledge library. Re-upload to your Strategist Coach project so every future session reads the latest version.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-bar">
+        <div class="eyebrow">Next</div>
+        <h2>Run the Offer Architect skill.</h2>
+        <p>You now know what a strong offer document looks like and why it matters. Time to open your Strategist Coach, invoke the Offer Architect skill, and build your v1 — with all this principle live in the coach as you go.</p>
+        <a href="/2-3-run-the-offer-architect" class="cta-button">2.3 — Run the Offer Architect →</a>
+    </section>
+
+    <footer>
+        <span class="brand">Compound Consultant</span>
+        <div class="footer-label">2.2 — The Anatomy of an Offer</div>
+    </footer>
+
+</body>
+</html>

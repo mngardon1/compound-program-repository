@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>1.3 Test Your Positioning | Compound Consultant</title>
+    <meta name="description" content="Your positioning is a hypothesis. It gets proven, broken, or sharpened in the market. Hunt for No's, not validation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #132539; --paper: #F9F8F5; --teal: #13B5A2; --teal-deep: #12917E; --teal-light: #5DCFC1; --mint: #D5F0EC; --slate: #6B7A8D; --slate-deep: #2A3F54; --white: #FFFFFF; --warning: #D4A338;
+            --text-on-dark: rgba(255,255,255,0.92); --text-muted-dark: rgba(255,255,255,0.72);
+            --font-display: 'Sora', Arial, sans-serif; --font-body: 'Inter', Arial, sans-serif; --font-mono: 'JetBrains Mono', monospace;
+            --max-content: 880px; --max-wide: 1080px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { background: var(--paper); color: var(--navy); }
+        body { font-family: var(--font-body); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal); text-decoration: none; } a:hover { color: var(--teal-deep); }
+        header { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(19,37,57,0.08); }
+        .brand { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--navy); }
+        .header-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
+        .breadcrumb-wrap { max-width: var(--max-wide); margin: 0 auto; padding: 28px 40px 0; }
+        .breadcrumb { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); }
+        .breadcrumb a { color: var(--slate); } .breadcrumb a:hover { color: var(--navy); }
+        .breadcrumb span { margin: 0 8px; }
+        .hero { background: var(--navy); color: var(--white); padding: 80px 40px 96px; text-align: center; margin-top: 32px; }
+        .hero .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; }
+        .hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 6vw, 60px); line-height: 1.1; color: var(--white); margin-bottom: 20px; letter-spacing: -0.01em; }
+        .hero .subtitle { font-size: 19px; color: var(--text-muted-dark); max-width: 680px; margin: 0 auto; line-height: 1.6; }
+        .hero .meta-pill { display: inline-flex; gap: 24px; margin-top: 32px; padding: 12px 24px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark); }
+        .hero .meta-pill .sep { color: rgba(255,255,255,0.4); }
+        .section { padding: 88px 40px; }
+        .section.dark { background: var(--navy); color: var(--white); }
+        .section.dark h2, .section.dark h3 { color: var(--white); }
+        .section.dark .eyebrow { color: var(--teal); }
+        .section-inner { max-width: var(--max-content); margin: 0 auto; }
+        .section-inner.wide { max-width: var(--max-wide); }
+        .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate); margin-bottom: 16px; }
+        h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 4vw, 40px); line-height: 1.15; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.01em; }
+        .section-intro { font-size: 18px; color: var(--slate); max-width: 720px; margin-bottom: 36px; line-height: 1.65; }
+        .section.dark .section-intro { color: var(--text-muted-dark); }
+        h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.3; color: var(--navy); margin-bottom: 10px; }
+        p { margin-bottom: 18px; } p:last-child { margin-bottom: 0; }
+        .section.dark p { color: var(--text-on-dark); }
+        strong { font-weight: 600; color: var(--navy); }
+        .section.dark strong { color: var(--white); }
+        em { font-style: italic; }
+        code { font-family: var(--font-mono); font-size: 14px; background: rgba(19,181,162,0.08); color: var(--teal-deep); padding: 1px 6px; border-radius: 3px; }
+        .section.dark code { background: rgba(93,207,193,0.12); color: var(--teal-light); }
+        .pull-quote { margin: 32px 0; padding: 24px 32px; background: var(--white); border-left: 3px solid var(--teal); font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+        .section.dark .pull-quote { background: rgba(255,255,255,0.05); color: var(--white); }
+
+        .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+        .signal-card { padding: 28px 26px; border-radius: 4px; }
+        .signal-card.yes { background: rgba(19,181,162,0.08); border: 1px solid rgba(19,181,162,0.25); border-top: 3px solid var(--teal); }
+        .signal-card.no { background: rgba(212,163,56,0.08); border: 1px solid rgba(212,163,56,0.25); border-top: 3px solid var(--warning); }
+        .signal-card.grin { background: rgba(107,122,138,0.08); border: 1px solid rgba(107,122,138,0.25); border-top: 3px solid var(--slate); }
+        .signal-card .s-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; font-weight: 500; }
+        .signal-card.yes .s-label { color: var(--teal-deep); }
+        .signal-card.no .s-label { color: var(--warning); }
+        .signal-card.grin .s-label { color: var(--slate); }
+        .signal-card h3 { font-size: 20px; margin-bottom: 14px; color: var(--navy); }
+        .signal-card ul { list-style: none; padding: 0; }
+        .signal-card li { font-size: 14.5px; color: var(--slate-deep); padding: 6px 0 6px 22px; position: relative; line-height: 1.55; }
+        .signal-card.yes li::before { content: '·'; position: absolute; left: 0; color: var(--teal); font-weight: 700; font-size: 18px; }
+        .signal-card.no li::before { content: '·'; position: absolute; left: 0; color: var(--warning); font-weight: 700; font-size: 18px; }
+        .signal-card.grin li::before { content: '·'; position: absolute; left: 0; color: var(--slate); font-weight: 700; font-size: 18px; }
+
+        .compare-table { width: 100%; border-collapse: collapse; margin-top: 24px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
+        .compare-table th, .compare-table td { padding: 16px 20px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 15px; color: rgba(255,255,255,0.85); vertical-align: top; }
+        .compare-table th { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table .good { color: var(--teal-light); }
+        .compare-table .bad { color: var(--warning); }
+
+        .log-block { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-left: 3px solid var(--teal); padding: 24px 28px; margin-top: 24px; }
+        .log-block .l-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; font-weight: 500; }
+        .log-block ul { list-style: none; padding: 0; }
+        .log-block li { color: var(--text-on-dark); padding: 6px 0 6px 22px; position: relative; font-size: 15px; line-height: 1.55; }
+        .log-block li::before { content: '→'; position: absolute; left: 0; color: var(--teal); }
+
+        .note-box { background: rgba(212,163,56,0.08); border-left: 3px solid var(--warning); padding: 20px 24px; margin: 24px 0; }
+        .note-box .note-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warning); margin-bottom: 8px; font-weight: 500; }
+        .note-box p { font-size: 14.5px; color: var(--slate-deep); line-height: 1.6; margin: 0; }
+        .section.dark .note-box { background: rgba(212,163,56,0.1); }
+        .section.dark .note-box p { color: rgba(255,255,255,0.85); }
+
+        .script-block { background: var(--navy); color: var(--text-on-dark); padding: 28px 32px; margin-top: 20px; border-radius: 4px; font-family: var(--font-display); font-style: italic; font-size: 17px; line-height: 1.6; }
+
+        .cta-bar { background: var(--navy); color: var(--white); padding: 64px 40px; text-align: center; }
+        .cta-bar .eyebrow { color: var(--teal); margin-bottom: 16px; }
+        .cta-bar h2 { color: var(--white); margin-bottom: 16px; }
+        .cta-bar p { color: var(--text-muted-dark); max-width: 620px; margin: 0 auto 28px; }
+        .cta-button { display: inline-block; padding: 16px 32px; background: var(--teal); color: var(--navy); font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 3px; transition: background 0.15s; }
+        .cta-button:hover { background: var(--teal-light); color: var(--navy); }
+
+        footer { background: var(--navy); color: var(--text-muted-dark); padding: 48px 40px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
+        footer .brand { color: var(--white); font-size: 14px; margin-bottom: 8px; display: block; }
+        footer .footer-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+
+        @media (max-width: 900px) { .three-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 700px) { header { padding: 16px 24px; } .hero { padding: 56px 24px 64px; } .section { padding: 56px 24px; } .cta-bar { padding: 56px 24px; } .hero .meta-pill { flex-direction: column; gap: 8px; padding: 16px 20px; } .hero .meta-pill .sep { display: none; } .compare-table th, .compare-table td { padding: 12px 14px; font-size: 13px; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="brand">Compound Consultant</a>
+        <div class="header-label">Phase 1 — Positioning</div>
+    </header>
+
+    <div class="breadcrumb-wrap">
+        <div class="breadcrumb">
+            <a href="/">Program Map</a>
+            <span>/</span>
+            <a href="/1-0-positioning">Phase 1 — Positioning</a>
+            <span>/</span>
+            1.3 Test Your Positioning
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="eyebrow">1.3 · Reality Check · Manual Work</div>
+        <h1>Test Your Positioning</h1>
+        <p class="subtitle">Your positioning is v1.0 — a hypothesis. It gets proven, broken, or sharpened in the market. Nothing else counts. Five real conversations minimum before you change a single word.</p>
+        <div class="meta-pill">
+            <span>5–10 ICP conversations</span>
+            <span class="sep">·</span>
+            <span>Hunt for No's, not validation</span>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">Non-Negotiable</div>
+            <h2>This is the phase most consultants skip.</h2>
+            <p>They build their positioning, feel good about it, start executing — and wonder six months later why nothing is landing. Don't be that person.</p>
+            <p>The work you did in 1.2 was necessary. It is not sufficient. Positioning only becomes real when it collides with real people. That collision is what this phase is for.</p>
+            <div class="pull-quote">
+                Your minimum commitment: 5 real conversations with real ICP before you touch anything else.
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">The Reframe</div>
+            <h2>You are not going out to get validation.</h2>
+            <p style="font-size:24px;color:var(--white);font-family:var(--font-display);font-weight:700;line-height:1.3;margin:24px 0;">You are going hunting for No's.</p>
+
+            <p>A clear "that's not really my problem" from the right person is worth more than ten warm nods. It tells you exactly what to fix — wrong language, wrong problem, wrong person. You can work with that.</p>
+
+            <p>What you cannot work with is a <strong>Grinfucker</strong> — the person who says "that's really interesting" and gives you nothing. They feel like progress. They are noise. A week of those conversations leaves you more confident in positioning that still doesn't work.</p>
+
+            <div class="pull-quote">
+                The goal is polarization. Hell yes or hell no. If everyone seems mildly interested, your positioning isn't sharp enough to do either job.
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">Who Counts</div>
+            <h2>Valid signal vs. worthless signal.</h2>
+            <p class="section-intro">Not every conversation tests positioning. Some confirm bias, some flatter, some have no relationship to your ICP. Be specific about whose feedback you count.</p>
+
+            <div style="background:#0E1B2A;border-radius:4px;padding:8px;">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>✓ Valid Signal</th>
+                            <th>✗ Worthless Signal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="good">Former colleagues who fit your ICP</td>
+                            <td class="bad">Your spouse</td>
+                        </tr>
+                        <tr>
+                            <td class="good">Past clients or adjacent contacts</td>
+                            <td class="bad">Your mastermind group</td>
+                        </tr>
+                        <tr>
+                            <td class="good">People currently holding your ideal buyer role</td>
+                            <td class="bad">Your coach</td>
+                        </tr>
+                        <tr>
+                            <td class="good">Warm intros to ICP-matched strangers</td>
+                            <td class="bad">Anyone who wants to support you</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top:40px;">How to ask</h3>
+            <p>Use this script. Don't soften it.</p>
+
+            <div class="script-block">
+                "I'm sharpening how I describe my work and I'd love 20 minutes of honest feedback from someone in your position. I'm not looking for business — just a reality check on whether I'm naming the right problem. Would you be open to a quick call?"
+            </div>
+
+            <p style="margin-top:24px;">If your warm network is thin: give 2–3 contacts a specific description of who you need — <em>"someone who runs a regional insurance carrier"</em> — and ask for an introduction. Specific asks move. Vague asks don't.</p>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner wide">
+            <div class="eyebrow">What You're Listening For</div>
+            <h2>Three signal types. One worth chasing. One worth gold. One to ignore.</h2>
+            <p class="section-intro">Every reaction falls into one of three buckets. Calibrate your ear so you can spot them in real time.</p>
+
+            <div class="three-grid">
+                <div class="signal-card yes">
+                    <div class="s-label">🟢 Hell Yes</div>
+                    <h3>Strong positive signal</h3>
+                    <ul>
+                        <li>They interrupt: "Yes — that's exactly it"</li>
+                        <li>They ask "how does that work?" or "what does that look like?"</li>
+                        <li>They reference someone else: "You should talk to my colleague"</li>
+                        <li>They use your language back to you unprompted</li>
+                        <li>The energy shifts — they stop being polite and start being specific</li>
+                    </ul>
+                </div>
+                <div class="signal-card no">
+                    <div class="s-label">🔴 Hell No (gold)</div>
+                    <h3>Productive negative signal</h3>
+                    <ul>
+                        <li>"That's not really how I'd describe it"</li>
+                        <li>They correct your language with their own words — capture this verbatim</li>
+                        <li>"I don't think that's the biggest issue for people like me"</li>
+                        <li>Confusion about who you're for</li>
+                    </ul>
+                </div>
+                <div class="signal-card grin">
+                    <div class="s-label">⚫ Grinfucker</div>
+                    <h3>Worthless signal — discard</h3>
+                    <ul>
+                        <li>"That's really interesting"</li>
+                        <li>"I can see how that would be valuable"</li>
+                        <li>"There's definitely a need for that"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="margin-top:32px;">If you're getting mostly Grinfucker responses, your positioning is too safe. It's not saying anything specific enough to push back on. Sharpen it (return to 1.4) before testing again.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">The Log</div>
+            <h2>Verbatim. After every conversation.</h2>
+            <p>Your memory is not the log. After every conversation, immediately write down:</p>
+
+            <div class="log-block" style="background:rgba(19,181,162,0.05);border:1px solid rgba(19,181,162,0.2);border-left:3px solid var(--teal);">
+                <div class="l-label" style="color:var(--teal-deep);">Capture for every conversation</div>
+                <ul style="list-style:none;padding:0;">
+                    <li style="color:var(--slate-deep);padding:6px 0 6px 22px;position:relative;font-size:15px;line-height:1.55;"><span style="position:absolute;left:0;color:var(--teal);">→</span> The exact phrase you used</li>
+                    <li style="color:var(--slate-deep);padding:6px 0 6px 22px;position:relative;font-size:15px;line-height:1.55;"><span style="position:absolute;left:0;color:var(--teal);">→</span> Their exact response — word for word</li>
+                    <li style="color:var(--slate-deep);padding:6px 0 6px 22px;position:relative;font-size:15px;line-height:1.55;"><span style="position:absolute;left:0;color:var(--teal);">→</span> Any language they used to describe the problem in their own words</li>
+                    <li style="color:var(--slate-deep);padding:6px 0 6px 22px;position:relative;font-size:15px;line-height:1.55;"><span style="position:absolute;left:0;color:var(--teal);">→</span> The moment energy shifted and what triggered it</li>
+                    <li style="color:var(--slate-deep);padding:6px 0 6px 22px;position:relative;font-size:15px;line-height:1.55;"><span style="position:absolute;left:0;color:var(--teal);">→</span> Your read: Hell Yes / Hell No / Grinfucker</li>
+                </ul>
+            </div>
+
+            <p style="margin-top:24px;">After 5–10 conversations, patterns emerge. Certain words land. Others don't. One part of your positioning gets recognition while another gets blank stares.</p>
+
+            <div class="pull-quote">
+                That log is what you bring to the Positioning skill in iteration mode (1.4) — not your impressions.
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">The Decision Rule</div>
+            <h2>Hold vs. Refine.</h2>
+            <p class="section-intro">One No is not a signal. One Yes is not a signal. Before changing anything, run three filters:</p>
+
+            <ol style="margin:18px 0 18px 22px;color:var(--text-on-dark);font-size:16px;line-height:1.7;">
+                <li><strong style="color:var(--white);">Does this reaction come from someone who actually fits your ICP?</strong></li>
+                <li><strong style="color:var(--white);">Have you heard this same reaction from at least 3 people?</strong></li>
+                <li><strong style="color:var(--white);">Is the issue the language — or the underlying concept?</strong></li>
+            </ol>
+
+            <p style="margin-top:24px;font-size:18px;color:var(--text-on-dark);"><strong style="color:var(--white);">Minimum bar to refine: 5 ICP conversations. Full stop.</strong></p>
+
+            <p>Don't touch your positioning files after one bad call. Get 5. Read the pattern. Then decide.</p>
+
+            <div class="note-box">
+                <div class="note-label">If you're tempted to iterate after every conversation</div>
+                <p>That impulse is uncertainty, not signal. The Positioning skill's iteration mode in 1.4 will help you distinguish between signal worth acting on and noise worth ignoring. But it works best when you bring 5+ conversations of pattern, not a single uncomfortable moment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">The Loop</div>
+            <h2>This is how positioning gets sharp over time.</h2>
+            <p style="font-family:var(--font-mono);font-size:15px;color:var(--teal-deep);background:rgba(19,181,162,0.05);padding:24px 28px;border:1px solid rgba(19,181,162,0.2);border-radius:4px;margin:24px 0;line-height:1.7;">
+                Test positioning → Log verbatim reactions → Find patterns (5+ convos) → Bring log to Positioning skill (iteration mode) → Update files → Test again
+            </p>
+            <p>This loop runs as long as you're in market. The consultants who build sharp, durable positioning are the ones who never stop running it. v1.0 becomes v1.1, v1.2, v2.0 over time — each version sharpened by actual market signal.</p>
+        </div>
+    </section>
+
+    <section class="cta-bar">
+        <div class="eyebrow">Next</div>
+        <h2>Bring the signal back to the coach.</h2>
+        <p>Once you have 5+ conversations logged and patterns are clear, return to your Strategist Coach and re-invoke the Positioning Architect skill in iteration mode. 1.4 walks you through the workflow.</p>
+        <a href="/1-4-iterate-your-positioning" class="cta-button">1.4 — Iterate Your Positioning →</a>
+    </section>
+
+    <footer>
+        <span class="brand">Compound Consultant</span>
+        <div class="footer-label">1.3 — Test Your Positioning</div>
+    </footer>
+
+</body>
+</html>

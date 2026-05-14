@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>1.2 Build Your Positioning | Compound Consultant</title>
+    <meta name="description" content="Invoke the Positioning Architect skill. 60–90 minute guided build across POV, Problem, Person, Synthesis. Produces 7 canonical files.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #132539; --paper: #F9F8F5; --teal: #13B5A2; --teal-deep: #12917E; --teal-light: #5DCFC1; --mint: #D5F0EC; --slate: #6B7A8D; --slate-deep: #2A3F54; --white: #FFFFFF; --warning: #D4A338;
+            --text-on-dark: rgba(255,255,255,0.92); --text-muted-dark: rgba(255,255,255,0.72);
+            --font-display: 'Sora', Arial, sans-serif; --font-body: 'Inter', Arial, sans-serif; --font-mono: 'JetBrains Mono', monospace;
+            --max-content: 880px; --max-wide: 1080px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { background: var(--paper); color: var(--navy); }
+        body { font-family: var(--font-body); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal); text-decoration: none; } a:hover { color: var(--teal-deep); }
+        header { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(19,37,57,0.08); }
+        .brand { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--navy); }
+        .header-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
+        .breadcrumb-wrap { max-width: var(--max-wide); margin: 0 auto; padding: 28px 40px 0; }
+        .breadcrumb { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); }
+        .breadcrumb a { color: var(--slate); } .breadcrumb a:hover { color: var(--navy); }
+        .breadcrumb span { margin: 0 8px; }
+        .hero { background: var(--navy); color: var(--white); padding: 80px 40px 96px; text-align: center; margin-top: 32px; }
+        .hero .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; }
+        .hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 6vw, 60px); line-height: 1.1; color: var(--white); margin-bottom: 20px; letter-spacing: -0.01em; }
+        .hero .subtitle { font-size: 19px; color: var(--text-muted-dark); max-width: 680px; margin: 0 auto; line-height: 1.6; }
+        .hero .meta-pill { display: inline-flex; gap: 24px; margin-top: 32px; padding: 12px 24px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark); }
+        .hero .meta-pill .sep { color: rgba(255,255,255,0.4); }
+        .section { padding: 88px 40px; }
+        .section.dark { background: var(--navy); color: var(--white); }
+        .section.dark h2, .section.dark h3 { color: var(--white); }
+        .section.dark .eyebrow { color: var(--teal); }
+        .section-inner { max-width: var(--max-content); margin: 0 auto; }
+        .section-inner.wide { max-width: var(--max-wide); }
+        .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate); margin-bottom: 16px; }
+        h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 4vw, 40px); line-height: 1.15; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.01em; }
+        .section-intro { font-size: 18px; color: var(--slate); max-width: 720px; margin-bottom: 36px; line-height: 1.65; }
+        .section.dark .section-intro { color: var(--text-muted-dark); }
+        h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.3; color: var(--navy); margin-bottom: 10px; }
+        p { margin-bottom: 18px; } p:last-child { margin-bottom: 0; }
+        .section.dark p { color: var(--text-on-dark); }
+        strong { font-weight: 600; color: var(--navy); }
+        .section.dark strong { color: var(--white); }
+        em { font-style: italic; }
+        code { font-family: var(--font-mono); font-size: 14px; background: rgba(19,181,162,0.08); color: var(--teal-deep); padding: 1px 6px; border-radius: 3px; }
+        .section.dark code { background: rgba(93,207,193,0.12); color: var(--teal-light); }
+        .pull-quote { margin: 32px 0; padding: 24px 32px; background: var(--white); border-left: 3px solid var(--teal); font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+        .section.dark .pull-quote { background: rgba(255,255,255,0.05); color: var(--white); }
+
+        .phase-block { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 28px 30px; margin-bottom: 16px; border-left: 3px solid var(--teal); }
+        .phase-block.p2 { border-left-color: var(--teal-light); }
+        .phase-block.p3 { border-left-color: var(--mint); }
+        .phase-block.p4 { border-left-color: var(--warning); }
+        .phase-block .p-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+        .phase-block.p2 .p-label { color: var(--teal-light); }
+        .phase-block.p3 .p-label { color: var(--mint); }
+        .phase-block.p4 .p-label { color: var(--warning); }
+        .phase-block h3 { font-size: 22px; color: var(--white); margin-bottom: 10px; }
+        .phase-block p { font-size: 15.5px; color: var(--text-muted-dark); line-height: 1.6; margin-bottom: 12px; }
+        .phase-block .checkpoint { font-family: var(--font-mono); font-size: 12px; color: var(--teal-light); padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 14px; }
+
+        .files-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .files-table th, .files-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(19,37,57,0.08); font-size: 15px; color: var(--slate-deep); vertical-align: top; }
+        .files-table th { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); }
+        .files-table .f-name { font-family: var(--font-mono); font-size: 13px; color: var(--teal-deep); }
+        .files-table .f-check { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); }
+
+        .triggers-block { background: rgba(19,181,162,0.05); border: 1px solid rgba(19,181,162,0.18); border-radius: 4px; padding: 24px 28px; margin-top: 24px; }
+        .triggers-block .t-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 12px; font-weight: 500; }
+        .triggers-list { list-style: none; padding: 0; margin: 0; }
+        .triggers-list li { font-family: var(--font-mono); font-size: 14px; color: var(--navy); padding: 6px 0; padding-left: 22px; position: relative; }
+        .triggers-list li::before { content: '›'; position: absolute; left: 0; color: var(--teal); font-weight: 700; font-size: 18px; top: 2px; }
+
+        .prereq-list { list-style: none; margin-top: 16px; padding: 0; }
+        .prereq-list li { padding: 8px 0 8px 28px; position: relative; font-size: 16px; color: var(--slate-deep); line-height: 1.55; }
+        .section.dark .prereq-list li { color: var(--text-on-dark); }
+        .prereq-list li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+
+        .note-box { background: rgba(212,163,56,0.08); border-left: 3px solid var(--warning); padding: 20px 24px; margin: 24px 0; }
+        .note-box .note-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warning); margin-bottom: 8px; font-weight: 500; }
+        .note-box p { font-size: 14.5px; color: var(--slate-deep); line-height: 1.6; margin: 0; }
+        .section.dark .note-box { background: rgba(212,163,56,0.1); }
+        .section.dark .note-box p { color: rgba(255,255,255,0.85); }
+
+        .cta-bar { background: var(--navy); color: var(--white); padding: 64px 40px; text-align: center; }
+        .cta-bar .eyebrow { color: var(--teal); margin-bottom: 16px; }
+        .cta-bar h2 { color: var(--white); margin-bottom: 16px; }
+        .cta-bar p { color: var(--text-muted-dark); max-width: 620px; margin: 0 auto 28px; }
+        .cta-button { display: inline-block; padding: 16px 32px; background: var(--teal); color: var(--navy); font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 3px; transition: background 0.15s; }
+        .cta-button:hover { background: var(--teal-light); color: var(--navy); }
+
+        footer { background: var(--navy); color: var(--text-muted-dark); padding: 48px 40px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
+        footer .brand { color: var(--white); font-size: 14px; margin-bottom: 8px; display: block; }
+        footer .footer-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+
+        @media (max-width: 700px) { header { padding: 16px 24px; } .hero { padding: 56px 24px 64px; } .section { padding: 56px 24px; } .cta-bar { padding: 56px 24px; } .hero .meta-pill { flex-direction: column; gap: 8px; padding: 16px 20px; } .hero .meta-pill .sep { display: none; } .files-table th, .files-table td { padding: 10px 12px; font-size: 13px; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="brand">Compound Consultant</a>
+        <div class="header-label">Phase 1 — Positioning</div>
+    </header>
+
+    <div class="breadcrumb-wrap">
+        <div class="breadcrumb">
+            <a href="/">Program Map</a>
+            <span>/</span>
+            <a href="/1-0-positioning">Phase 1 — Positioning</a>
+            <span>/</span>
+            1.2 Build Your Positioning
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="eyebrow">1.2 · Foundation Build · 60–90 min</div>
+        <h1>Build Your Positioning</h1>
+        <p class="subtitle">Invoke the Positioning Architect skill inside your Strategist Coach. A guided 60–90 minute build through POV → Problem → Person → Synthesis. Produces 7 canonical files that every downstream phase reads.</p>
+        <div class="meta-pill">
+            <span>60–90 min build</span>
+            <span class="sep">·</span>
+            <span>Diagnostic must be loaded first</span>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">What This Is</div>
+            <h2>The deep build, in one focused session.</h2>
+            <p>The diagnostic from 1.1 captured your baseline — strengths, gaps, raw material. The Positioning Architect skill turns that baseline into a full positioning foundation. Seven canonical files that become the operating system for your content, sales, and delivery.</p>
+            <p>The skill works in sequence — POV first (the lens), then Problem (what the lens lets you own), then Person (who has the problem worst), then Synthesis (the assembled positioning statement, pressure-tested). Each phase locks before the next begins. You can pause and resume between phases if needed, but the work flows best when done in one focused session.</p>
+            <div class="pull-quote">
+                Plan for 60–90 minutes. Block the time, kill notifications. The coach pushes hard — comfortable positioning is invisible positioning.
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">Before You Run It</div>
+            <h2>Two things must be true.</h2>
+            <p class="section-intro">If either is missing, fix it first. The skill will refuse to build on a weak foundation.</p>
+
+            <h3 style="color:var(--white);margin-top:24px;">1. Your diagnostic is loaded</h3>
+            <p style="color:var(--text-muted-dark);font-size:15.5px;">From <a href="/1-1-run-the-diagnostic" style="color:var(--teal-light);">1.1</a> — your <code>compound-consultant-diagnostic.md</code> file should be in your Strategist Coach's knowledge base. The Positioning skill reads it before asking a single question. If it's not loaded, the skill will stop and tell you to run the diagnostic first.</p>
+
+            <h3 style="color:var(--white);margin-top:24px;">2. You've read 0.3 (the positioning mindset reset)</h3>
+            <p style="color:var(--text-muted-dark);font-size:15.5px;">The skill will push back on three patterns — leading with features, clever language, the generalist trap. If you don't know what to watch for, you'll give safe answers without realizing they're weak. <a href="/0-3-positioning-mindset-reset" style="color:var(--teal-light);">Read 0.3</a> if you haven't already.</p>
+
+            <div class="note-box">
+                <div class="note-label">Bonus: upload existing business docs</div>
+                <p>If you have a bio, website copy, prior offer doc, or LinkedIn About section — upload those to your Strategist Coach project too. The skill notes where current positioning aligns or conflicts with what you're building. More context = sharper output.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">How to Invoke the Skill</div>
+            <h2>Open the coach. Trigger the skill.</h2>
+            <p class="section-intro">Use any of these phrases — or anything equivalent — and the skill activates.</p>
+
+            <div class="triggers-block">
+                <div class="t-label">Trigger phrases</div>
+                <ul class="triggers-list">
+                    <li>"Let's build my positioning"</li>
+                    <li>"I'm ready to build my positioning"</li>
+                    <li>"Walk me through positioning"</li>
+                    <li>"Let's do the positioning deep dive"</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner wide">
+            <div class="eyebrow">The Four Phases</div>
+            <h2>Each phase locks before the next begins.</h2>
+            <p class="section-intro">The skill works through four phases in sequence. Production happens at checkpoints — files get delivered before moving on. You can pause between phases. You can't skip ahead.</p>
+
+            <div class="phase-block">
+                <div class="p-label">Phase 1 · Foundation</div>
+                <h3>POV — Who you are and what you believe</h3>
+                <p>Start wide. Surface your advantages, worldview, contrarian beliefs, the enemy, your unique mechanism, and any frameworks (formalized or candidates). The POV establishes the lens through which Problem and Person will be defined — it constrains everything downstream.</p>
+                <div class="checkpoint">Checkpoint 1 produces: narrative-spine.md, frameworks.md</div>
+            </div>
+
+            <div class="phase-block p2">
+                <div class="p-label">Phase 2 · Commitment</div>
+                <h3>Problem — Commit to one</h3>
+                <p>With POV locked, narrow to the ONE problem you should own. The POV constrains the problem — it should explain WHY this problem persists. Test 2–3 candidates against POV fit, evidence, urgency, specificity, ownership. Force the choice. Then build the problem ecosystem: cost of inaction, failed alternatives, surface symptom, buyer language, pain maps, desire maps.</p>
+                <div class="checkpoint">Checkpoint 2 produces: core-problem.md, pain-maps.md, desire-maps.md</div>
+            </div>
+
+            <div class="phase-block p3">
+                <div class="p-label">Phase 3 · Specificity</div>
+                <h3>Person — Lock the ICP</h3>
+                <p>With POV and Problem locked, define exactly who has this problem worst. Situation, not demographics. Cross-check the pain language. Check POV resonance with this person. Define exclusions. Confirm the triple-circle alignment.</p>
+                <div class="checkpoint">Checkpoint 3 produces: icp.md</div>
+            </div>
+
+            <div class="phase-block p4">
+                <div class="p-label">Phase 4 · Synthesis</div>
+                <h3>Pull it all together</h3>
+                <p>Consistency audit across the three circles. Three positioning statement versions (full, elevator, narrative). Five pressure tests (Repeat-Back, Repulsion, Alternative, Plain Language, Coffee Sentence). Validation plan for any gaps or projected elements.</p>
+                <div class="checkpoint">Checkpoint 4 produces: positioning.md (v1.0 HYPOTHESIS)</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">The 7 Canonical Files</div>
+            <h2>What you walk away with.</h2>
+            <p class="section-intro">By the end of the session, your Compound O.S. has 8 canonical files total (diagnostic + 7 positioning files). Every downstream phase reads these.</p>
+
+            <table class="files-table">
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>Checkpoint</th>
+                        <th>What it contains</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="f-name">narrative-spine.md</td>
+                        <td class="f-check">Checkpoint 1</td>
+                        <td>POV, contrarian insight, worldview, the enemy, unique mechanism, POV narrative, content seeds</td>
+                    </tr>
+                    <tr>
+                        <td class="f-name">frameworks.md</td>
+                        <td class="f-check">Checkpoint 1</td>
+                        <td>Formalized frameworks (if you have them) or framework candidates from raw material</td>
+                    </tr>
+                    <tr>
+                        <td class="f-name">core-problem.md</td>
+                        <td class="f-check">Checkpoint 2</td>
+                        <td>One committed problem in buyer language, expanded statement, cost of inaction, failed alternatives, deprioritized problems</td>
+                    </tr>
+                    <tr>
+                        <td class="f-name">pain-maps.md</td>
+                        <td class="f-check">Checkpoint 2</td>
+                        <td>Verbatim buyer pain language across surface, deeper, emotional, failed solution pain + trigger moments</td>
+                    </tr>
+                    <tr>
+                        <td class="f-name">desire-maps.md</td>
+                        <td class="f-check">Checkpoint 2</td>
+                        <td>Felt-state resolutions for each pain — surface, deeper, emotional, identity desire</td>
+                    </tr>
+                    <tr>
+                        <td class="f-name">icp.md</td>
+                        <td class="f-check">Checkpoint 3</td>
+                        <td>ICP narrative, demographic/situation profile, psychographic profile, buyer language, exclusions</td>
+                    </tr>
+                    <tr>
+                        <td class="f-name">positioning.md</td>
+                        <td class="f-check">Checkpoint 4</td>
+                        <td>3 positioning versions, consistency audit, pressure test results, validation plan, evolution tracker</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">What to Expect</div>
+            <h2>The skill will push hard. That's the point.</h2>
+            <p class="section-intro">Comfortable positioning is invisible positioning. The skill is built to reject answers that drift into safe, generic, or borrowed territory. Here's what gets pushed back on:</p>
+
+            <ul class="prereq-list">
+                <li><strong>Demographic ICP</strong> — "VP of Sales at B2B SaaS" → "Which VP? At what stage? After what failure?"</li>
+                <li><strong>Consultant language</strong> — "lack of strategic clarity" → "What words would the buyer use over coffee?"</li>
+                <li><strong>Borrowed insights</strong> — "I learned this from [author]" → "What's YOUR version, from your own work?"</li>
+                <li><strong>Qualitative differentiation</strong> — "I'm more thorough" → "What's the structural difference? Why can't someone copy this?"</li>
+                <li><strong>Vague enemies</strong> — "bad leadership" → "What specific PRACTICE or BELIEF?"</li>
+                <li><strong>Multi-problem hedging</strong> — "I work on several issues" → "Choose one. The one your POV explains best."</li>
+            </ul>
+
+            <div class="pull-quote">
+                If you find yourself getting pushed back on, you're doing it right. The friction is the signal that you're moving from safe to specific.
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">After Each Checkpoint</div>
+            <h2>Save the files. Re-upload. Lock the phase.</h2>
+            <p class="section-intro">The skill produces files inside code blocks at each checkpoint. Don't wait until the end — save and upload at each one. This protects your work and gives the coach the latest version of each file as it builds the next phase.</p>
+
+            <ul class="prereq-list">
+                <li>Copy each file from its code block</li>
+                <li>Save in your <code>/Compound Consultant OS</code> folder with the exact filename</li>
+                <li>Upload to your Strategist Coach project's knowledge base</li>
+                <li>Confirm the checkpoint with the coach — then proceed to the next phase</li>
+            </ul>
+
+            <div class="note-box">
+                <div class="note-label">Pausing between phases</div>
+                <p>If you need to break mid-build, save and upload what you have. When you return, re-invoke the skill — it reads your uploaded files and picks up at the right checkpoint. Don't try to restart from scratch.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-bar">
+        <div class="eyebrow">Next</div>
+        <h2>v1.0 is a hypothesis. Test it.</h2>
+        <p>Your positioning is built — but until it collides with real ICP conversations, it's only a hypothesis. Phase 1.3 is where the hypothesis gets proven, broken, or sharpened. 5+ real conversations. Hunt for No's, not validation.</p>
+        <a href="/1-3-test-your-positioning" class="cta-button">1.3 — Test Your Positioning →</a>
+    </section>
+
+    <footer>
+        <span class="brand">Compound Consultant</span>
+        <div class="footer-label">1.2 — Build Your Positioning</div>
+    </footer>
+
+</body>
+</html>

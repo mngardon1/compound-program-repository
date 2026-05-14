@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>0.3 Positioning Mindset Reset | Compound Consultant</title>
+    <meta name="description" content="How positioning actually works in your buyer's mind — and the three instincts from your corporate career that derail it. Read before Phase 1.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #132539;
+            --paper: #F9F8F5;
+            --teal: #13B5A2;
+            --teal-deep: #12917E;
+            --teal-light: #5DCFC1;
+            --mint: #D5F0EC;
+            --slate: #6B7A8D;
+            --slate-deep: #2A3F54;
+            --white: #FFFFFF;
+            --warning: #D4A338;
+            --text-on-dark: rgba(255,255,255,0.92);
+            --text-muted-dark: rgba(255,255,255,0.72);
+            --text-faint-dark: rgba(255,255,255,0.55);
+            --font-display: 'Sora', Arial, sans-serif;
+            --font-body: 'Inter', Arial, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --max-content: 880px;
+            --max-wide: 1080px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { background: var(--paper); color: var(--navy); }
+        body { font-family: var(--font-body); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal); text-decoration: none; }
+        a:hover { color: var(--teal-deep); }
+        header { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(19,37,57,0.08); }
+        .brand { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--navy); }
+        .header-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
+        .breadcrumb-wrap { max-width: var(--max-wide); margin: 0 auto; padding: 28px 40px 0; }
+        .breadcrumb { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); }
+        .breadcrumb a { color: var(--slate); }
+        .breadcrumb a:hover { color: var(--navy); }
+        .breadcrumb span { margin: 0 8px; }
+        .hero { background: var(--navy); color: var(--white); padding: 80px 40px 96px; text-align: center; margin-top: 32px; }
+        .hero .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; }
+        .hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 6vw, 60px); line-height: 1.1; color: var(--white); margin-bottom: 20px; letter-spacing: -0.01em; }
+        .hero .subtitle { font-size: 19px; color: var(--text-muted-dark); max-width: 680px; margin: 0 auto; line-height: 1.6; }
+        .hero .meta-pill { display: inline-flex; gap: 24px; margin-top: 32px; padding: 12px 24px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark); }
+        .hero .meta-pill .sep { color: rgba(255,255,255,0.4); }
+        .section { padding: 88px 40px; }
+        .section.dark { background: var(--navy); color: var(--white); }
+        .section.dark h2, .section.dark h3 { color: var(--white); }
+        .section.dark .eyebrow { color: var(--teal); }
+        .section-inner { max-width: var(--max-content); margin: 0 auto; }
+        .section-inner.wide { max-width: var(--max-wide); }
+        .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate); margin-bottom: 16px; }
+        h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 4vw, 40px); line-height: 1.15; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.01em; }
+        .section-intro { font-size: 18px; color: var(--slate); max-width: 720px; margin-bottom: 36px; line-height: 1.65; }
+        .section.dark .section-intro { color: var(--text-muted-dark); }
+        h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.3; color: var(--navy); margin-bottom: 10px; }
+        p { margin-bottom: 18px; }
+        p:last-child { margin-bottom: 0; }
+        .section.dark p { color: var(--text-on-dark); }
+        strong { font-weight: 600; color: var(--navy); }
+        .section.dark strong { color: var(--white); }
+        em { font-style: italic; }
+        .pull-quote { margin: 32px 0; padding: 24px 32px; background: var(--white); border-left: 3px solid var(--teal); font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+        .section.dark .pull-quote { background: rgba(255,255,255,0.05); color: var(--white); }
+
+        /* Trap cards */
+        .trap-block {
+            margin-top: 28px;
+            padding: 32px 36px;
+            background: rgba(212,163,56,0.05);
+            border: 1px solid rgba(212,163,56,0.18);
+            border-left: 3px solid var(--warning);
+            border-radius: 4px;
+        }
+        .trap-block .trap-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--warning);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .trap-block h3 {
+            font-size: 24px;
+            color: var(--navy);
+            margin-bottom: 14px;
+            font-family: var(--font-display);
+            font-weight: 700;
+        }
+        .trap-block .trap-short {
+            font-family: var(--font-display);
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 18px;
+            line-height: 1.4;
+        }
+        .trap-block p {
+            font-size: 15.5px;
+            color: var(--slate-deep);
+            line-height: 1.65;
+        }
+        .trap-block .deeper-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal-deep);
+            margin-top: 24px;
+            margin-bottom: 10px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(19,37,57,0.1);
+        }
+        .trap-block .deeper {
+            font-size: 15px;
+            color: var(--slate-deep);
+            line-height: 1.65;
+        }
+        .trap-block .deeper em {
+            font-style: italic;
+            color: var(--slate-deep);
+        }
+
+        /* Question list */
+        .q-list {
+            list-style: none;
+            counter-reset: qc;
+            margin-top: 16px;
+        }
+        .q-list li {
+            counter-increment: qc;
+            position: relative;
+            padding-left: 56px;
+            padding-bottom: 24px;
+        }
+        .q-list li::before {
+            content: counter(qc, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--teal);
+        }
+        .q-list .q-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+        .q-list .q-body {
+            font-size: 15.5px;
+            color: var(--slate-deep);
+            line-height: 1.6;
+        }
+
+        .cta-bar { background: var(--navy); color: var(--white); padding: 64px 40px; text-align: center; }
+        .cta-bar .eyebrow { color: var(--teal); margin-bottom: 16px; }
+        .cta-bar h2 { color: var(--white); margin-bottom: 16px; }
+        .cta-bar p { color: var(--text-muted-dark); max-width: 620px; margin: 0 auto 28px; }
+        .cta-button { display: inline-block; padding: 16px 32px; background: var(--teal); color: var(--navy); font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 3px; transition: background 0.15s; }
+        .cta-button:hover { background: var(--teal-light); color: var(--navy); }
+
+        footer { background: var(--navy); color: var(--text-muted-dark); padding: 48px 40px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
+        footer .brand { color: var(--white); font-size: 14px; margin-bottom: 8px; display: block; }
+        footer .footer-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+
+        @media (max-width: 700px) {
+            header { padding: 16px 24px; }
+            .hero { padding: 56px 24px 64px; }
+            .section { padding: 56px 24px; }
+            .cta-bar { padding: 56px 24px; }
+            .hero .meta-pill { flex-direction: column; gap: 8px; padding: 16px 20px; }
+            .hero .meta-pill .sep { display: none; }
+            .trap-block { padding: 24px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="brand">Compound Consultant</a>
+        <div class="header-label">Phase 0 — Setup</div>
+    </header>
+
+    <div class="breadcrumb-wrap">
+        <div class="breadcrumb">
+            <a href="/">Program Map</a>
+            <span>/</span>
+            <a href="/">Phase 0 — Setup</a>
+            <span>/</span>
+            0.3 Positioning Mindset Reset
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="eyebrow">0.3 · Before Phase 1 · Phase 0</div>
+        <h1>Positioning Mindset Reset</h1>
+        <p class="subtitle">Most consultants don't fail at positioning because they lack expertise. They fail because the instincts that made them successful in corporate are actively working against them now. This page resets the operating system.</p>
+        <div class="meta-pill">
+            <span>20 min read</span>
+            <span class="sep">·</span>
+            <span>Read before you touch a single word of positioning</span>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">Do Not Skip This</div>
+            <h2>This is not a mindset pep talk.</h2>
+            <p>This is a technical briefing on how positioning actually works — and why the instincts that made you successful in a corporate career are actively working against you now.</p>
+            <p>Your Strategist Coach is installed. You understand what the Compound O.S. is becoming. But before Phase 1 begins — before you invoke the Diagnostic skill and start producing your first canonical files — you need a reset on how positioning operates in the buyer's mind. Get this wrong and Phase 1 fights you the whole way.</p>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">Why This Page Exists</div>
+            <h2>The expertise isn't the problem. The translation is.</h2>
+            <p class="section-intro">Most consultants don't fail because they lack expertise. They fail because they can't make their expertise legible to the outside world.</p>
+
+            <p>The language is vague — not because they don't know their work, but because they know it too deeply. The message is broad — not because they have nothing to say, but because they have too much. The pitch sounds generic — not because they're generic, but because the instincts that served them for decades are misfiring in a new context.</p>
+
+            <p>None of this is a character flaw. It's a transition problem. And once you see it clearly, it gets a lot easier to fix.</p>
+
+            <div class="pull-quote">
+                The consultants who struggle with positioning aren't confused about their work. They're using the wrong operating system. This page installs the right one.
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">The Core Disconnect</div>
+            <h2>Positioning happens in the buyer's mind — not on your website.</h2>
+            <p>Your job isn't to describe what you do. It's to occupy the specific mental slot that gets triggered when your buyer hits their breaking point.</p>
+            <p>But your corporate career trained you to describe your capabilities. Your resume, your performance reviews, your LinkedIn — all of it was built to answer <em>"what can you do?"</em> You got rewarded for versatility. For handling whatever came across your desk. For being the person who could figure anything out.</p>
+            <p>That instinct is going to fight you here.</p>
+            <p>Because your buyer isn't asking <em>"what can you do?"</em> They're asking <em>"is this person the answer to my specific problem?"</em> Those are completely different questions — and they require completely different answers.</p>
+            <p>When you lead with capabilities — <em>"I'm a strategic advisor with 20 years of experience across multiple industries"</em> — you're answering a question nobody is asking. Your buyer is dealing with a specific problem right now. They're not browsing consultant profiles looking for breadth. They're looking for someone who clearly gets their situation.</p>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">How Buyer Perception Works</div>
+            <h2>People organize everything into mental categories. You either get into one — or you don't exist.</h2>
+            <p class="section-intro">Al Ries and Jack Trout — the originators of positioning theory — described buyer perception as a set of mental ladders. For every category a person cares about, they maintain a ladder with a few rungs. Each rung holds a name.</p>
+
+            <p>Need a CRM? You think of Salesforce, then HubSpot, maybe a third. Need a project management tool? Asana, Monday, maybe Notion. The ladder has 3–7 rungs, max.</p>
+
+            <p>This applies to consultants too. When a VP of Operations thinks <em>"I need help with my team,"</em> they have a short mental list — maybe a firm they've used before, a person someone recommended, a name they saw on LinkedIn. That's the ladder.</p>
+
+            <p>If you're not on the ladder, you don't exist to that buyer. If you're on the wrong ladder — slotted as "leadership coach" when you actually do organizational redesign — you're competing against people you shouldn't be compared to.</p>
+
+            <p>The strategic choice: get on the right ladder, or build a new one. This program focuses on the first.</p>
+
+            <div class="pull-quote">
+                Vague positioning doesn't get you slotted in the wrong place. It gets you slotted nowhere. The buyer's mind has no room for "consultant who does a lot of things."
+            </div>
+
+            <p style="margin-top:32px;">Your buyer is hit with thousands of messages a day. They are not sitting around waiting to carefully evaluate your nuanced value proposition. They will give you about 5 seconds of attention. In those 5 seconds, they need to answer two questions:</p>
+
+            <ol style="margin:18px 0 18px 22px;color:var(--text-on-dark);font-size:16px;line-height:1.7;">
+                <li><strong style="color:var(--white);">Is this for me?</strong></li>
+                <li><strong style="color:var(--white);">Is this about my problem?</strong></li>
+            </ol>
+
+            <p>If both answers are yes — they lean in. If either is unclear — they scroll past. Not because they're not interested. Because their brain literally can't process it fast enough to care.</p>
+
+            <p>This is why specificity beats comprehensiveness every time. A brain that hears <em>"I help early-stage consultants who can't close their first 3 clients"</em> processes that instantly. A brain that hears <em>"I'm a strategic advisor helping professionals optimize their business development capabilities"</em> goes blank.</p>
+
+            <p><strong>Your positioning needs to work in 5 seconds, or it doesn't work.</strong></p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">The Three Traps</div>
+            <h2>The patterns that pull consultants off course.</h2>
+            <p class="section-intro">These are the instincts that show up during positioning work. Every one of them feels reasonable — even responsible — in the moment. Name them now so you catch yourself when they show up in Phase 1.</p>
+
+            <div class="trap-block">
+                <div class="trap-label">Trap 01</div>
+                <h3>Leading With Features</h3>
+                <div class="trap-short">Describing your process, deliverables, and credentials before establishing what changes for the client is the fastest way to lose them. They're not buying your methodology. They're buying the outcome.</div>
+                <div class="deeper-label">Why this happens</div>
+                <p class="deeper">This trap is everywhere in consultant positioning, and it comes from a reasonable instinct: you want to show your work. So you describe the deliverables — the calls, the frameworks, the documents, the process. It feels concrete. It feels professional.</p>
+                <p class="deeper">But your buyer isn't buying a process. They're buying an outcome.</p>
+                <p class="deeper"><strong>Features:</strong> <em>"A 90-day engagement with biweekly coaching, a positioning audit, and a complete messaging framework."</em></p>
+                <p class="deeper"><strong>Transformation:</strong> <em>"In 90 days, you go from explaining yourself in every conversation to having prospects refer you before you even speak to them."</em></p>
+                <p class="deeper">The first describes what you do. The second describes what the client experiences on the other side. One is about you. The other is about them.</p>
+                <p class="deeper"><strong>The test:</strong> read your current positioning and count how many sentences are about your process, credentials, or deliverables — versus sentences about what the client's world looks like after working with you. Most consultants are running 80/20 in the wrong direction.</p>
+                <p class="deeper"><strong>The fix:</strong> lead with where the client ends up. Let the features serve as proof that you can get them there. Transformation first. Features as evidence.</p>
+            </div>
+
+            <div class="trap-block">
+                <div class="trap-label">Trap 02</div>
+                <h3>Clever Language Over Clear Language</h3>
+                <div class="trap-short">If your ideal client can't hear your positioning and immediately understand what you do and who it's for, the language is too clever. Clarity beats creativity at this stage. Every time.</div>
+                <div class="deeper-label">Why this happens</div>
+                <p class="deeper">Consultants love to invent terminology. <em>"Transformational Leadership Alignment." "Strategic Capability Acceleration." "Integrated Value Architecture."</em></p>
+                <p class="deeper">These phrases feel professional. They feel differentiated. And they are completely meaningless to a buyer who is Googling <em>"why do my best people keep quitting."</em></p>
+                <p class="deeper">Your buyer's language is always better than your language. In the Person and Problem phases, we'll capture the exact words buyers use to describe their situation. Those words become your positioning language — not the polished consultant version.</p>
+                <p class="deeper"><strong>The test:</strong> say your positioning out loud to someone who fits your ideal client. Can they hear it once and repeat it back to a colleague in their own words? If they hesitate, the language is the problem — not their comprehension.</p>
+                <p class="deeper"><strong>The fix:</strong> use their words, not yours. The language your client uses when they're venting to a peer, when they're Googling at 11pm, when they're describing the frustration to their spouse. That language. Not your polished version of it.</p>
+                <p class="deeper">It will feel too simple. Too informal. Not smart enough. That feeling is a signal you're on the right track.</p>
+            </div>
+
+            <div class="trap-block">
+                <div class="trap-label">Trap 03</div>
+                <h3>The Generalist Trap</h3>
+                <div class="trap-short">"I can handle anything you need" feels safe. It's actually invisible. The buyer's mind has no slot for a generalist. You get remembered for specificity — or you don't get remembered at all.</div>
+                <div class="deeper-label">Why this happens</div>
+                <p class="deeper">This one comes from a genuinely good place. You've spent a career solving hard problems across different contexts. Going narrow feels like leaving capability — and revenue — on the table.</p>
+                <p class="deeper">Here's what actually happens when you stay broad: you become the obvious choice for nothing. The buyer in the middle of a specific crisis isn't looking for flexibility. They're looking for someone who has seen this exact problem before. Breadth reads as inexperience. Specificity reads as expertise.</p>
+                <p class="deeper">And here's the part that surprises most people: <strong>narrowing doesn't shrink your market. It sharpens your signal.</strong> Clients outside your stated niche still find you, still hire you. But the clients inside your niche find you faster, hire you with less convincing, pay you more, and refer you to people exactly like them.</p>
+                <p class="deeper">You're not leaving money on the table by going narrow. You're making it easier for the right money to find you.</p>
+                <p class="deeper">One more thing worth naming: the resistance to narrowing is often less about revenue and more about identity. Claiming one specific problem means making a bet. Staying broad means keeping options open. But open options aren't a positioning strategy — they're a way of avoiding the vulnerability of being specific.</p>
+                <p class="deeper">The work ahead asks you to make the bet. One problem. One client. It will feel constraining at first. Hold it anyway.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">What to Carry Into Phase 1</div>
+            <h2>Three questions to keep with you.</h2>
+            <p class="section-intro">You don't need to memorize this whole page. Carry these three questions through every positioning decision in Phase 1. They will catch most of the drift before it sets in.</p>
+
+            <ol class="q-list">
+                <li>
+                    <div class="q-title">Would my buyer immediately recognize themselves in this?</div>
+                    <div class="q-body">If you have to explain or qualify, the positioning isn't there yet. The buyer either sees themselves on the page or they don't.</div>
+                </li>
+                <li>
+                    <div class="q-title">Is this their language or mine?</div>
+                    <div class="q-body">If it sounds like something from a consulting deliverable, rewrite it in the words they'd use in a text message. The bar for buyer language is: would they say this themselves?</div>
+                </li>
+                <li>
+                    <div class="q-title">Am I positioning around what's true — or what I wish were true?</div>
+                    <div class="q-body">The real version is always stronger. The aspirational version sounds polished but lands generic. Start with what's actually true today — sharpen it from there.</div>
+                </li>
+            </ol>
+
+            <div class="pull-quote">
+                The work ahead isn't about finding clever language or constructing the perfect pitch. It's about getting honest about what you do, who needs it, and what makes it different. Everything else follows from that.
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-bar">
+        <div class="eyebrow">Phase 0 Complete</div>
+        <h2>You're ready for Phase 1.</h2>
+        <p>Strategist Coach installed. Mindset reset. The foundation is in place. Phase 1 begins where every consulting business actually breaks or breaks through — the positioning work that everything downstream depends on. Your first move: invoke the Diagnostic skill.</p>
+        <a href="/1-0-positioning" class="cta-button">Phase 1 — Positioning →</a>
+    </section>
+
+    <footer>
+        <span class="brand">Compound Consultant</span>
+        <div class="footer-label">0.3 — Positioning Mindset Reset</div>
+    </footer>
+
+</body>
+</html>

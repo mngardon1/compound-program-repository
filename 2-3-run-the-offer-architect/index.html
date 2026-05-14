@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>2.3 Run the Offer Architect Skill | Compound Consultant</title>
+    <meta name="description" content="How to invoke the Offer Architect skill inside your Strategist Coach. What to expect in the build session, how to iterate, how to save and propagate the output.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #132539;
+            --paper: #F9F8F5;
+            --teal: #13B5A2;
+            --teal-deep: #12917E;
+            --teal-light: #5DCFC1;
+            --mint: #D5F0EC;
+            --slate: #6B7A8D;
+            --slate-deep: #2A3F54;
+            --white: #FFFFFF;
+            --warning: #D4A338;
+
+            --text-on-dark: rgba(255,255,255,0.92);
+            --text-muted-dark: rgba(255,255,255,0.72);
+            --text-faint-dark: rgba(255,255,255,0.55);
+
+            --font-display: 'Sora', Arial, sans-serif;
+            --font-body: 'Inter', Arial, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --max-content: 880px;
+            --max-wide: 1080px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { background: var(--paper); color: var(--navy); }
+        body {
+            font-family: var(--font-body);
+            font-size: 17px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--teal); text-decoration: none; }
+        a:hover { color: var(--teal-deep); }
+
+        /* Header */
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(19,37,57,0.08);
+        }
+        .brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--navy);
+        }
+        .header-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb-wrap {
+            max-width: var(--max-wide);
+            margin: 0 auto;
+            padding: 28px 40px 0;
+        }
+        .breadcrumb {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--slate);
+        }
+        .breadcrumb a { color: var(--slate); }
+        .breadcrumb a:hover { color: var(--navy); }
+        .breadcrumb span { margin: 0 8px; }
+
+        /* Hero */
+        .hero {
+            background: var(--navy);
+            color: var(--white);
+            padding: 80px 40px 96px;
+            text-align: center;
+            margin-top: 32px;
+        }
+        .hero .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(40px, 6vw, 60px);
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+        .hero .subtitle {
+            font-size: 19px;
+            color: var(--text-muted-dark);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .hero .meta-pill {
+            display: inline-flex;
+            gap: 24px;
+            margin-top: 32px;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-on-dark);
+        }
+        .hero .meta-pill .sep { color: rgba(255,255,255,0.4); }
+
+        /* Section base */
+        .section { padding: 88px 40px; }
+        .section.dark { background: var(--navy); color: var(--white); }
+        .section.dark h2, .section.dark h3 { color: var(--white); }
+        .section.dark .eyebrow { color: var(--teal); }
+        .section-inner { max-width: var(--max-content); margin: 0 auto; }
+        .section-inner.wide { max-width: var(--max-wide); }
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--slate);
+            margin-bottom: 16px;
+        }
+        h2 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(30px, 4vw, 40px);
+            line-height: 1.15;
+            color: var(--navy);
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+        .section-intro {
+            font-size: 18px;
+            color: var(--slate);
+            max-width: 720px;
+            margin-bottom: 36px;
+            line-height: 1.65;
+        }
+        .section.dark .section-intro { color: var(--text-muted-dark); }
+        h3 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1.3;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+        p { margin-bottom: 18px; }
+        p:last-child { margin-bottom: 0; }
+        .section.dark p { color: var(--text-on-dark); }
+        strong { font-weight: 600; color: var(--navy); }
+        .section.dark strong { color: var(--white); }
+        em { font-style: italic; }
+        code {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            background: rgba(19,181,162,0.08);
+            color: var(--teal-deep);
+            padding: 1px 6px;
+            border-radius: 3px;
+        }
+        .section.dark code {
+            background: rgba(93,207,193,0.12);
+            color: var(--teal-light);
+        }
+
+        /* Pull quote */
+        .pull-quote {
+            margin: 32px 0;
+            padding: 24px 32px;
+            background: var(--white);
+            border-left: 3px solid var(--teal);
+            font-family: var(--font-display);
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.4;
+        }
+        .section.dark .pull-quote {
+            background: rgba(255,255,255,0.05);
+            color: var(--white);
+        }
+
+        /* Prereq list */
+        .prereq-list {
+            list-style: none;
+            margin-top: 16px;
+            padding: 0;
+        }
+        .prereq-list li {
+            padding: 8px 0 8px 28px;
+            position: relative;
+            font-size: 16px;
+            color: var(--slate-deep);
+            line-height: 1.55;
+        }
+        .section.dark .prereq-list li { color: var(--text-on-dark); }
+        .section.dark .prereq-list li strong { color: var(--white); }
+        .prereq-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        /* Trigger phrase block */
+        .triggers-block {
+            background: rgba(19,181,162,0.05);
+            border: 1px solid rgba(19,181,162,0.18);
+            border-radius: 4px;
+            padding: 24px 28px;
+            margin-top: 24px;
+        }
+        .triggers-block .t-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal-deep);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .triggers-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .triggers-list li {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--navy);
+            padding: 6px 0;
+            padding-left: 22px;
+            position: relative;
+        }
+        .triggers-list li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: 700;
+            font-size: 18px;
+            top: 2px;
+        }
+
+        /* Block grid (the 6 question blocks A-F) */
+        .block-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 16px;
+        }
+        .block-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 22px 24px;
+            border-left: 3px solid var(--teal);
+        }
+        .block-card.load-bearing { border-left-color: var(--teal); }
+        .block-card.mechanical { border-left-color: var(--teal-light); }
+        .block-card.connective { border-left-color: var(--mint); }
+        .block-card .b-letter {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .block-card.mechanical .b-letter { color: var(--teal-light); }
+        .block-card.connective .b-letter { color: var(--mint); }
+        .block-card h3 {
+            font-size: 17px;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .block-card p {
+            font-size: 14px;
+            color: var(--text-muted-dark);
+            line-height: 1.55;
+            margin: 0;
+        }
+        .block-card .b-flag {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .block-card.mechanical .b-flag { color: var(--teal-light); }
+        .block-card.connective .b-flag { color: var(--mint); }
+
+        /* Expect grid (good vs weak answers) */
+        .expect-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .expect-card {
+            background: var(--white);
+            border: 1px solid rgba(19,37,57,0.08);
+            padding: 24px 26px;
+            border-top: 3px solid var(--teal);
+        }
+        .expect-card.weak { border-top-color: var(--warning); }
+        .expect-card .expect-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 8px;
+        }
+        .expect-card.weak .expect-label { color: var(--warning); }
+        .expect-card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--navy);
+        }
+        .expect-card p {
+            font-size: 14px;
+            color: var(--slate-deep);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* Flow list */
+        .flow-list {
+            list-style: none;
+            counter-reset: flow;
+            margin-top: 20px;
+        }
+        .flow-list li {
+            counter-increment: flow;
+            position: relative;
+            padding: 14px 0 14px 56px;
+            border-bottom: 1px solid rgba(19,37,57,0.08);
+        }
+        .section.dark .flow-list li { border-bottom-color: rgba(255,255,255,0.08); }
+        .flow-list li:last-child { border-bottom: none; }
+        .flow-list li::before {
+            content: counter(flow, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: 14px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--teal);
+        }
+        .flow-list .flow-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--navy);
+        }
+        .section.dark .flow-list .flow-title { color: var(--white); }
+        .flow-list .flow-desc {
+            font-size: 14.5px;
+            color: var(--slate);
+            margin-top: 4px;
+            line-height: 1.55;
+        }
+        .section.dark .flow-list .flow-desc { color: var(--text-muted-dark); }
+
+        /* Step list */
+        .step-list {
+            list-style: none;
+            counter-reset: stepcount;
+            margin-top: 16px;
+        }
+        .step-list > li {
+            counter-increment: stepcount;
+            position: relative;
+            padding-left: 60px;
+            padding-bottom: 32px;
+        }
+        .step-list > li::before {
+            content: counter(stepcount, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--teal);
+        }
+        .step-list .step-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+        .section.dark .step-list .step-title { color: var(--white); }
+        .step-list .step-body {
+            font-size: 15.5px;
+            color: var(--slate-deep);
+            line-height: 1.6;
+        }
+        .section.dark .step-list .step-body { color: var(--text-muted-dark); }
+
+        /* Paste list (what to paste in during iteration) */
+        .paste-list {
+            list-style: none;
+            margin-top: 16px;
+            padding: 0;
+        }
+        .paste-list li {
+            padding: 10px 0 10px 28px;
+            position: relative;
+            font-size: 15.5px;
+            color: var(--text-on-dark);
+            line-height: 1.55;
+        }
+        .paste-list li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: 700;
+            font-size: 18px;
+            top: 6px;
+        }
+
+        /* Note box */
+        .note-box {
+            background: rgba(212,163,56,0.08);
+            border-left: 3px solid var(--warning);
+            padding: 20px 24px;
+            margin: 24px 0;
+        }
+        .note-box .note-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--warning);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .note-box p {
+            font-size: 14.5px;
+            color: var(--slate-deep);
+            line-height: 1.6;
+            margin: 0;
+        }
+        .section.dark .note-box { background: rgba(212,163,56,0.1); }
+        .section.dark .note-box p { color: rgba(255,255,255,0.85); }
+
+        /* CTA bar */
+        .cta-bar {
+            background: var(--navy);
+            color: var(--white);
+            padding: 64px 40px;
+            text-align: center;
+        }
+        .cta-bar .eyebrow {
+            color: var(--teal);
+            margin-bottom: 16px;
+        }
+        .cta-bar h2 {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .cta-bar p {
+            color: var(--text-muted-dark);
+            max-width: 620px;
+            margin: 0 auto 28px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--teal);
+            color: var(--navy);
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-radius: 3px;
+            transition: background 0.15s;
+        }
+        .cta-button:hover {
+            background: var(--teal-light);
+            color: var(--navy);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--text-muted-dark);
+            padding: 48px 40px;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        footer .brand {
+            color: var(--white);
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        footer .footer-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .block-grid { grid-template-columns: 1fr; }
+            .expect-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 700px) {
+            header { padding: 16px 24px; }
+            .hero { padding: 56px 24px 64px; }
+            .section { padding: 56px 24px; }
+            .cta-bar { padding: 56px 24px; }
+            .hero .meta-pill { flex-direction: column; gap: 8px; padding: 16px 20px; }
+            .hero .meta-pill .sep { display: none; }
+            .step-list > li { padding-left: 44px; }
+            .step-list > li::before { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="brand">Compound Consultant</a>
+        <div class="header-label">Phase 2 — Package</div>
+    </header>
+
+    <div class="breadcrumb-wrap">
+        <div class="breadcrumb">
+            <a href="/">Program Map</a>
+            <span>/</span>
+            <a href="/2-0-package">Phase 2 — Package</a>
+            <span>/</span>
+            2.3 Run the Offer Architect Skill
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="eyebrow">2.3 · Build Session · Phase 2</div>
+        <h1>Run the Offer Architect Skill</h1>
+        <p class="subtitle">Open your Strategist Coach. Invoke the Offer Architect skill. Build your v1 Offer Doc with the principles from 2.2 live in the coach as you go. Plan for 60–90 minutes the first time.</p>
+        <div class="meta-pill">
+            <span>60–90 min build</span>
+            <span class="sep">·</span>
+            <span>Bring honest answers, not safe ones</span>
+        </div>
+    </section>
+
+    <!-- WHAT THIS IS -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">What This Is</div>
+            <h2>The Offer Architect is a skill, not a separate coach.</h2>
+            <p>You installed the Offer Architect skill when you set up your Strategist Coach back in <a href="/0-2-install-strategist-coach">0.2</a>. It's a procedure your Strategist Coach follows when you signal you're ready to build (or iterate) the Offer Doc.</p>
+            <p>This page walks you through what to expect when you run it the first time — the trigger phrases that invoke the skill, the question sequence the coach will walk you through, what good answers sound like, and how to handle the iteration loop that follows every market conversation you have.</p>
+            <div class="pull-quote">
+                You don't open a new project to run this. You open your Strategist Coach, say the right thing, and the skill runs.
+            </div>
+        </div>
+    </section>
+
+    <!-- PREREQUISITES -->
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">Before You Run It</div>
+            <h2>Two things must be true.</h2>
+            <p class="section-intro">Both are non-negotiable. If either is missing, fix it first — the skill will refuse to build on weak inputs, and you'll waste a session.</p>
+
+            <h3 style="color:var(--white);margin-top:24px;">1. Your Strategist Coach is installed</h3>
+            <p style="color:var(--text-muted-dark);font-size:15.5px;">If you haven't installed it yet, go back to <a href="/0-2-install-strategist-coach" style="color:var(--teal-light);">2.1</a>. You need the system prompt loaded, the <code>skill-offer-architect.md</code> file in your knowledge base, and your Phase 1 files uploaded.</p>
+
+            <h3 style="color:var(--white);margin-top:24px;">2. You've read 2.2 — The Anatomy of an Offer</h3>
+            <p style="color:var(--text-muted-dark);font-size:15.5px;">The coach will move fast through the question sequence. If you don't know what makes the load-bearing four load-bearing, what failure modes look like, or what the value equation is doing — you'll give safe answers without realizing they're weak. <a href="/2-2-build-your-offer-document" style="color:var(--teal-light);">Read 2.2</a> first.</p>
+
+            <div class="note-box">
+                <div class="note-label">Reality check</div>
+                <p>This is a 60–90 minute focused session. The coach will push back. You'll feel friction. That's the point — a comfortable build session produces a weak offer doc. Block the time, kill notifications, and bring honest answers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW TO INVOKE -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">How to Invoke the Skill</div>
+            <h2>Open the coach. Say the word.</h2>
+            <p class="section-intro">Skills aren't buttons you click. They're modes the Strategist Coach enters when you signal intent. Use any of these trigger phrases — or anything equivalent — and the skill runs.</p>
+
+            <div class="triggers-block">
+                <div class="t-label">Trigger phrases</div>
+                <ul class="triggers-list">
+                    <li>"Let's build my offer doc"</li>
+                    <li>"I'm ready to build my offer"</li>
+                    <li>"Walk me through the offer doc"</li>
+                    <li>"I want to iterate the offer with this feedback"</li>
+                    <li>"Refine the offer doc"</li>
+                </ul>
+            </div>
+
+            <p style="margin-top:32px;">When the skill is active, the coach will:</p>
+            <ol class="flow-list" style="margin-top:8px;">
+                <li>
+                    <div class="flow-title">Read your Phase 1 files</div>
+                    <div class="flow-desc">Confirms positioning is sharp enough to build on. If files are vague or missing, it stops and tells you what to fix first.</div>
+                </li>
+                <li>
+                    <div class="flow-title">Walk you through six question blocks</div>
+                    <div class="flow-desc">One question at a time. Waits for your answer before moving on. Rejects vague or generic answers in the load-bearing blocks.</div>
+                </li>
+                <li>
+                    <div class="flow-title">Play your inputs back before producing</div>
+                    <div class="flow-desc">Confirms what it heard. Catches misunderstandings before drafting.</div>
+                </li>
+                <li>
+                    <div class="flow-title">Run pre-delivery checks</div>
+                    <div class="flow-desc">Runs the five failure modes scan and the value equation stress test before delivering the doc. Surfaces gaps for you to address.</div>
+                </li>
+                <li>
+                    <div class="flow-title">Deliver your v1 Offer Doc</div>
+                    <div class="flow-desc">Produces the structured 10-section doc, then hands control back to your Strategist Coach — which will trigger the market testing hard stop.</div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- THE QUESTION SEQUENCE -->
+    <section class="section dark">
+        <div class="section-inner wide">
+            <div class="eyebrow">The Question Sequence</div>
+            <h2>Six blocks. Different intensities.</h2>
+            <p class="section-intro">The coach pushes hardest on the load-bearing blocks (A, B, C). It moves efficiently through the mechanical ones (D, E). It surfaces founder substance honestly (F). Knowing what's coming helps you prepare.</p>
+
+            <div class="block-grid">
+                <div class="block-card load-bearing">
+                    <div class="b-letter">Block A — Load-bearing</div>
+                    <h3>The Problem</h3>
+                    <p>Goes deeper than positioning. Daily experience, what they've already tried, what they won't say out loud.</p>
+                    <div class="b-flag">Reject: abstractions. Push: specific scenes, buyer's own words.</div>
+                </div>
+                <div class="block-card load-bearing">
+                    <div class="b-letter">Block B — Load-bearing</div>
+                    <h3>The Outcome</h3>
+                    <p>What specifically changes after the engagement. What they tell a friend six months later.</p>
+                    <div class="b-flag">Reject: clarity / confidence / transformation. Push: concrete markers.</div>
+                </div>
+                <div class="block-card load-bearing">
+                    <div class="b-letter">Block C — Load-bearing (Q8 only)</div>
+                    <h3>The Mechanism + Differentiator</h3>
+                    <p>How the engagement works. What makes your approach structurally different — not "better."</p>
+                    <div class="b-flag">Reject: "more experienced," "more rigorous." Push: specific mechanism.</div>
+                </div>
+                <div class="block-card mechanical">
+                    <div class="b-letter">Block D — Mechanical</div>
+                    <h3>Delivery</h3>
+                    <p>Format, touchpoints, cadence. Access and support structure. Translated to outcomes, not features.</p>
+                    <div class="b-flag">Moves quickly once load-bearing blocks are sharp.</div>
+                </div>
+                <div class="block-card mechanical">
+                    <div class="b-letter">Block E — Mechanical (with depth on pricing)</div>
+                    <h3>Commercial</h3>
+                    <p>Outcome-value pricing, defensibility test. Guarantee structured by structure, trigger, consequence. Specific CTA.</p>
+                    <div class="b-flag">If you can't defend the price by pointing at outcomes — go back to Block B.</div>
+                </div>
+                <div class="block-card connective">
+                    <div class="b-letter">Block F — Connective</div>
+                    <h3>The Founder</h3>
+                    <p>Personal connection to the problem. Proof points that matter to this specific buyer.</p>
+                    <div class="b-flag">Reject: bio-style content. Push: lived experience with this problem.</div>
+                </div>
+            </div>
+
+            <div class="pull-quote">
+                The blocks aren't a script. The coach reacts to your answers — pushing back where they're soft, moving forward where they're sharp.
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT GOOD ANSWERS LOOK LIKE -->
+    <section class="section">
+        <div class="section-inner wide">
+            <div class="eyebrow">What Good Answers Sound Like</div>
+            <h2>Strong is specific. Weak is abstract.</h2>
+            <p class="section-intro">The coach will reject weak answers in the load-bearing blocks. That friction is the point. Here's how to recognize when you're giving a strong answer vs a soft one — so you can correct yourself before the coach has to.</p>
+
+            <div class="expect-grid">
+                <div class="expect-card">
+                    <div class="expect-label">Strong</div>
+                    <h3>"On a bad Tuesday she's three weeks behind on her newsletter, has a proposal sitting unfinished, and just spent an hour on LinkedIn instead of writing."</h3>
+                    <p>Specific. A scene. Words you'd hear the buyer say.</p>
+                </div>
+                <div class="expect-card weak">
+                    <div class="expect-label">Weak — coach will push back</div>
+                    <h3>"She's overwhelmed and not making progress."</h3>
+                    <p>Abstract. Could be anyone. No buyer would recognize themselves here.</p>
+                </div>
+                <div class="expect-card">
+                    <div class="expect-label">Strong</div>
+                    <h3>"After working with me, they've shipped a publishable offer doc, a 5-page sales page, and 30 outreach messages going out weekly to qualified prospects."</h3>
+                    <p>Concrete markers. Things you can point at.</p>
+                </div>
+                <div class="expect-card weak">
+                    <div class="expect-label">Weak — coach will push back</div>
+                    <h3>"They feel more confident and have clarity about their business."</h3>
+                    <p>Generic transformation language. Every consultant in your category could promise this.</p>
+                </div>
+            </div>
+
+            <div class="pull-quote" style="margin-top:36px;">
+                If the coach lets your answer through and you read it back thinking "any consultant could have written this" — you let yourself off the hook. Bring it back to the coach and ask it to push harder.
+            </div>
+        </div>
+    </section>
+
+    <!-- THE ITERATION LOOP -->
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">After the First Build</div>
+            <h2>The iteration loop is where the offer gets sharp.</h2>
+            <p class="section-intro">v1 of your offer doc is almost always wrong. That's expected. The Offer Architect skill isn't a one-time build tool — it's also the iteration engine. Every time you bring real market signal back to your Strategist Coach, you re-invoke the skill and the doc gets sharper.</p>
+
+            <h3 style="color:var(--white);margin-top:8px;">What you paste in</h3>
+            <ul class="paste-list">
+                <li>Transcripts or notes from ICP conversations (2.4)</li>
+                <li>Objections from sales calls — verbatim if possible</li>
+                <li>Pricing pushback — and whether it's structural or just budget</li>
+                <li>Sections of the offer doc that prospects react to (or ignore)</li>
+                <li>Sentences that keep getting quoted back to you</li>
+                <li>Sentences the coach itself flagged on a previous revision</li>
+            </ul>
+
+            <h3 style="color:var(--white);margin-top:32px;">What the coach does with it</h3>
+            <ol class="flow-list">
+                <li>
+                    <div class="flow-title">Compares the signal against the current offer doc</div>
+                    <div class="flow-desc">Identifies the specific section the signal contradicts, confirms, or sharpens.</div>
+                </li>
+                <li>
+                    <div class="flow-title">Surfaces the implication clearly</div>
+                    <div class="flow-desc">"This objection tells us Section 4 is reading as too vague — buyers can't quantify the value."</div>
+                </li>
+                <li>
+                    <div class="flow-title">Drafts a revision and explains the reasoning</div>
+                    <div class="flow-desc">Shows what changed and why. Doesn't just produce — teaches.</div>
+                </li>
+                <li>
+                    <div class="flow-title">Flags downstream impact</div>
+                    <div class="flow-desc">If the Offer Doc section changes, the Sales Page beat likely needs an update too. The coach tells you which beat and why.</div>
+                </li>
+            </ol>
+
+            <p style="margin-top:28px;">Your job is to bring honest market signal in, decide what to accept, commit the change. The coach handles the analysis and the rewrite.</p>
+
+            <div class="pull-quote">
+                Most consultants iterate piecemeal — they tweak a LinkedIn post, rewrite an email, revise a proposal — and nothing compounds because the source never changes. You iterate at the source. The system propagates.
+            </div>
+        </div>
+    </section>
+
+    <!-- SAVING YOUR OFFER DOC -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">Saving and Updating</div>
+            <h2>The output is a file. Treat it like one.</h2>
+            <p class="section-intro">The Offer Architect produces your offer doc as structured markdown. It's not chat output you scroll back to find — it's a canonical file in your Compound O.S.</p>
+
+            <ol class="step-list">
+                <li>
+                    <div class="step-title">Save the output as <code>offer.md</code></div>
+                    <div class="step-body">Copy the coach's full output. Paste into a plain text file. Save as <code>offer.md</code> in your knowledge library (same folder as <code>positioning.md</code>, <code>icp.md</code>, etc.).</div>
+                </li>
+                <li>
+                    <div class="step-title">Date the version + add a changelog entry</div>
+                    <div class="step-body">At the bottom of <code>offer.md</code>, add a changelog: <code>## v1 — [date]</code> with a one-line note about what's in this version. Every future revision gets its own entry with what changed and why.</div>
+                </li>
+                <li>
+                    <div class="step-title">Upload <code>offer.md</code> to your Strategist Coach project</div>
+                    <div class="step-body">Replace any previous version. The Strategist reads this file at the start of every session — keep it current and the coach gets sharper. Let it drift and the coach drifts with it.</div>
+                </li>
+                <li>
+                    <div class="step-title">When you iterate, repeat steps 1–3</div>
+                    <div class="step-body">After every refinement session, replace the file in your project knowledge base. Add a changelog entry. The coach's strategic advice is only as current as the file it's reading.</div>
+                </li>
+            </ol>
+
+            <div class="note-box">
+                <div class="note-label">Why versioning matters</div>
+                <p>The changelog is your reasoning trail. Six months from now you'll want to know which assumption the market corrected and why. It also helps the coach — when you bring new signal, it can compare against past versions to see what's already been tried.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TROUBLESHOOTING -->
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">If Something Goes Sideways</div>
+            <h2>Common issues, quick fixes.</h2>
+
+            <h3 style="color:var(--white);margin-top:24px;">The coach won't enter skill mode — it just gives me general advice.</h3>
+            <p>Three causes. (1) The <code>skill-offer-architect.md</code> file isn't uploaded to your project. Check the knowledge area. (2) The system prompt didn't paste correctly — it doesn't know the skill exists. Re-paste from 0.2. (3) Your trigger phrase was too vague. Try one of the explicit triggers: "Let's build my offer doc" or "Walk me through the offer doc."</p>
+
+            <h3 style="color:var(--white);margin-top:24px;">The coach is being soft — it's not pushing back on weak answers.</h3>
+            <p>Older version of the skill file, or the skill file isn't being read. Re-copy <code>skill-offer-architect.md</code> from 0.2, replace the file in your project, start a new chat. Ask explicitly: "Are you reading the skill file? Confirm you see the section hierarchy and pre-delivery checks."</p>
+
+            <h3 style="color:var(--white);margin-top:24px;">It tried to write a sales page before locking the offer doc.</h3>
+            <p>Tell it to stop. The Strategist Coach's system prompt has a hard stop after offer doc v1 — but if you didn't paste the prompt fully, this rule isn't loaded. Re-paste the system prompt from 2.1 and start a fresh chat.</p>
+
+            <h3 style="color:var(--white);margin-top:24px;">My Phase 1 files aren't being read.</h3>
+            <p>Confirm files are in the project's knowledge area as <code>.md</code> or <code>.txt</code> (not Word docs or PDFs). Start a new chat and explicitly say: "Read my positioning files and the offer-architect skill before we begin."</p>
+
+            <h3 style="color:var(--white);margin-top:24px;">The output is good but I want a fresh take on a specific section.</h3>
+            <p>Don't start over. Tell the coach exactly which section to redo: "Re-do Section 4 — the outcome promise. The current draft is too soft on concrete markers. Push harder."</p>
+        </div>
+    </section>
+
+    <!-- NEXT -->
+    <section class="cta-bar">
+        <div class="eyebrow">Next</div>
+        <h2>v1 is wrong. Go test it.</h2>
+        <p>You have your offer doc. Before building a sales page or anything downstream, get this in front of 5–10 ICP contacts. Watch where they lean in. Watch where they go quiet. Bring the signal back to your Strategist Coach and iterate. <strong>2.4</strong> walks you through how.</p>
+        <a href="/2-4-test-your-offer" class="cta-button">2.4 — Test Your Offer →</a>
+    </section>
+
+    <footer>
+        <span class="brand">Compound Consultant</span>
+        <div class="footer-label">2.3 — Run the Offer Architect Skill</div>
+    </footer>
+
+</body>
+</html>

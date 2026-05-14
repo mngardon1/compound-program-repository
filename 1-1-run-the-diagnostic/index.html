@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>1.1 Run the Diagnostic | Compound Consultant</title>
+    <meta name="description" content="Invoke the Compound Diagnostic skill inside your Strategist Coach. 30 minutes. Produces the first canonical file in your Compound O.S.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #132539; --paper: #F9F8F5; --teal: #13B5A2; --teal-deep: #12917E; --teal-light: #5DCFC1; --mint: #D5F0EC; --slate: #6B7A8D; --slate-deep: #2A3F54; --white: #FFFFFF; --warning: #D4A338;
+            --text-on-dark: rgba(255,255,255,0.92); --text-muted-dark: rgba(255,255,255,0.72); --text-faint-dark: rgba(255,255,255,0.55);
+            --font-display: 'Sora', Arial, sans-serif; --font-body: 'Inter', Arial, sans-serif; --font-mono: 'JetBrains Mono', monospace;
+            --max-content: 880px; --max-wide: 1080px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { background: var(--paper); color: var(--navy); }
+        body { font-family: var(--font-body); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal); text-decoration: none; } a:hover { color: var(--teal-deep); }
+        header { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(19,37,57,0.08); }
+        .brand { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--navy); }
+        .header-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
+        .breadcrumb-wrap { max-width: var(--max-wide); margin: 0 auto; padding: 28px 40px 0; }
+        .breadcrumb { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); }
+        .breadcrumb a { color: var(--slate); } .breadcrumb a:hover { color: var(--navy); }
+        .breadcrumb span { margin: 0 8px; }
+        .hero { background: var(--navy); color: var(--white); padding: 80px 40px 96px; text-align: center; margin-top: 32px; }
+        .hero .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; }
+        .hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 6vw, 60px); line-height: 1.1; color: var(--white); margin-bottom: 20px; letter-spacing: -0.01em; }
+        .hero .subtitle { font-size: 19px; color: var(--text-muted-dark); max-width: 680px; margin: 0 auto; line-height: 1.6; }
+        .hero .meta-pill { display: inline-flex; gap: 24px; margin-top: 32px; padding: 12px 24px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark); }
+        .hero .meta-pill .sep { color: rgba(255,255,255,0.4); }
+        .section { padding: 88px 40px; }
+        .section.dark { background: var(--navy); color: var(--white); }
+        .section.dark h2, .section.dark h3 { color: var(--white); }
+        .section.dark .eyebrow { color: var(--teal); }
+        .section-inner { max-width: var(--max-content); margin: 0 auto; }
+        .section-inner.wide { max-width: var(--max-wide); }
+        .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate); margin-bottom: 16px; }
+        h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 4vw, 40px); line-height: 1.15; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.01em; }
+        .section-intro { font-size: 18px; color: var(--slate); max-width: 720px; margin-bottom: 36px; line-height: 1.65; }
+        .section.dark .section-intro { color: var(--text-muted-dark); }
+        h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.3; color: var(--navy); margin-bottom: 10px; }
+        p { margin-bottom: 18px; } p:last-child { margin-bottom: 0; }
+        .section.dark p { color: var(--text-on-dark); }
+        strong { font-weight: 600; color: var(--navy); }
+        .section.dark strong { color: var(--white); }
+        em { font-style: italic; }
+        code { font-family: var(--font-mono); font-size: 14px; background: rgba(19,181,162,0.08); color: var(--teal-deep); padding: 1px 6px; border-radius: 3px; }
+        .section.dark code { background: rgba(93,207,193,0.12); color: var(--teal-light); }
+        .pull-quote { margin: 32px 0; padding: 24px 32px; background: var(--white); border-left: 3px solid var(--teal); font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+        .section.dark .pull-quote { background: rgba(255,255,255,0.05); color: var(--white); }
+
+        .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+        .three-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 28px 26px; border-top: 3px solid var(--teal); }
+        .three-card.c2 { border-top-color: var(--teal-light); }
+        .three-card.c3 { border-top-color: var(--mint); }
+        .three-card .three-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+        .three-card.c2 .three-label { color: var(--teal-light); }
+        .three-card.c3 .three-label { color: var(--mint); }
+        .three-card h3 { font-size: 20px; margin-bottom: 12px; color: var(--white); }
+        .three-card p { font-size: 15px; color: var(--text-muted-dark); line-height: 1.6; margin: 0; }
+
+        .prereq-list { list-style: none; margin-top: 16px; padding: 0; }
+        .prereq-list li { padding: 8px 0 8px 28px; position: relative; font-size: 16px; color: var(--slate-deep); line-height: 1.55; }
+        .section.dark .prereq-list li { color: var(--text-on-dark); }
+        .prereq-list li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+
+        .step-list { list-style: none; counter-reset: stepcount; margin-top: 16px; }
+        .step-list > li { counter-increment: stepcount; position: relative; padding-left: 60px; padding-bottom: 32px; }
+        .step-list > li::before { content: counter(stepcount, decimal-leading-zero); position: absolute; left: 0; top: -2px; font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--teal); }
+        .step-list .step-title { font-family: var(--font-display); font-weight: 700; font-size: 18px; color: var(--navy); margin-bottom: 6px; }
+        .section.dark .step-list .step-title { color: var(--white); }
+        .step-list .step-body { font-size: 15.5px; color: var(--slate-deep); line-height: 1.6; }
+        .section.dark .step-list .step-body { color: var(--text-muted-dark); }
+
+        .triggers-block { background: rgba(19,181,162,0.05); border: 1px solid rgba(19,181,162,0.18); border-radius: 4px; padding: 24px 28px; margin-top: 24px; }
+        .triggers-block .t-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 12px; font-weight: 500; }
+        .triggers-list { list-style: none; padding: 0; margin: 0; }
+        .triggers-list li { font-family: var(--font-mono); font-size: 14px; color: var(--navy); padding: 6px 0; padding-left: 22px; position: relative; }
+        .triggers-list li::before { content: '›'; position: absolute; left: 0; color: var(--teal); font-weight: 700; font-size: 18px; top: 2px; }
+
+        .note-box { background: rgba(212,163,56,0.08); border-left: 3px solid var(--warning); padding: 20px 24px; margin: 24px 0; }
+        .note-box .note-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warning); margin-bottom: 8px; font-weight: 500; }
+        .note-box p { font-size: 14.5px; color: var(--slate-deep); line-height: 1.6; margin: 0; }
+        .section.dark .note-box { background: rgba(212,163,56,0.1); }
+        .section.dark .note-box p { color: rgba(255,255,255,0.85); }
+
+        .cta-bar { background: var(--navy); color: var(--white); padding: 64px 40px; text-align: center; }
+        .cta-bar .eyebrow { color: var(--teal); margin-bottom: 16px; }
+        .cta-bar h2 { color: var(--white); margin-bottom: 16px; }
+        .cta-bar p { color: var(--text-muted-dark); max-width: 620px; margin: 0 auto 28px; }
+        .cta-button { display: inline-block; padding: 16px 32px; background: var(--teal); color: var(--navy); font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 3px; transition: background 0.15s; }
+        .cta-button:hover { background: var(--teal-light); color: var(--navy); }
+
+        footer { background: var(--navy); color: var(--text-muted-dark); padding: 48px 40px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
+        footer .brand { color: var(--white); font-size: 14px; margin-bottom: 8px; display: block; }
+        footer .footer-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+
+        @media (max-width: 900px) { .three-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 700px) { header { padding: 16px 24px; } .hero { padding: 56px 24px 64px; } .section { padding: 56px 24px; } .cta-bar { padding: 56px 24px; } .hero .meta-pill { flex-direction: column; gap: 8px; padding: 16px 20px; } .hero .meta-pill .sep { display: none; } .step-list > li { padding-left: 44px; } .step-list > li::before { font-size: 18px; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="brand">Compound Consultant</a>
+        <div class="header-label">Phase 1 — Positioning</div>
+    </header>
+
+    <div class="breadcrumb-wrap">
+        <div class="breadcrumb">
+            <a href="/">Program Map</a>
+            <span>/</span>
+            <a href="/1-0-positioning">Phase 1 — Positioning</a>
+            <span>/</span>
+            1.1 Run the Diagnostic
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="eyebrow">1.1 · Phase 1 Begins · First Skill</div>
+        <h1>Run the Diagnostic</h1>
+        <p class="subtitle">Invoke the Compound Diagnostic skill inside your Strategist Coach. 30 minutes of structured Q&A across Person, Problem, POV. Produces your first canonical file — the baseline that every coach and skill from this point reads.</p>
+        <div class="meta-pill">
+            <span>30 min conversation</span>
+            <span class="sep">·</span>
+            <span>Bring honest answers, not polished ones</span>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">What This Is</div>
+            <h2>Your first skill invocation. Your first canonical file.</h2>
+            <p>You installed your Strategist Coach in <a href="/0-2-install-strategist-coach">0.2</a>. The Compound Diagnostic skill is already loaded in its knowledge base. This module is where you actually invoke it — open your coach, type the trigger phrase, and the skill runs.</p>
+            <p>The diagnostic is a structured 25–30 minute conversation. The coach pushes back when answers are vague. It captures exact buyer language when you give it. At the end, it produces a scored baseline document with gaps, strengths, and priorities for what to sharpen first in Phase 1.2.</p>
+            <div class="pull-quote">
+                You can't build sharp positioning on a blurry baseline. This is how you find out where you actually stand — and create the first file the entire program reads.
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner wide">
+            <div class="eyebrow">The Three Circles</div>
+            <h2>What the diagnostic assesses.</h2>
+            <p class="section-intro">Three dimensions. Each gets scored. Each gets a gap analysis. Together they form the foundation that Phase 1.2 builds your full positioning on.</p>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="three-label">Circle 01</div>
+                    <h3>Person</h3>
+                    <p>Who you serve. Not by demographics — by situation. What's happening in their world when they become a buyer. Their emotional state, their decision style, the exact language they use to describe their problem.</p>
+                </div>
+                <div class="three-card c2">
+                    <div class="three-label">Circle 02</div>
+                    <h3>Problem</h3>
+                    <p>What you actually solve. All the problems you see in your space, then which one your buyers actually hire you for. The surface symptom they notice first. What they'd Google at 11pm.</p>
+                </div>
+                <div class="three-card c3">
+                    <div class="three-label">Circle 03</div>
+                    <h3>POV</h3>
+                    <p>What makes your perspective different. Your natural advantages, your contrarian beliefs, what you stand against in your industry, your unique mechanism. Why you and not someone else.</p>
+                </div>
+            </div>
+
+            <p style="margin-top:32px;">The skill also tests <em>cross-circle alignment</em> — whether the person you described actually has the problem you described, whether your POV speaks to that person, whether your unique mechanism solves that specific problem. Misalignment between circles is where most positioning fails, and the diagnostic surfaces it before you do the Positioning skill in 1.2.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">Come Prepared</div>
+            <h2>You don't need to rehearse. Have these ready.</h2>
+            <p class="section-intro">The conversation works best with real material, not polished pitches. The skill wants the messy, unfiltered version.</p>
+
+            <ul class="prereq-list">
+                <li><strong>Your best guesses</strong> — the problem you think you solve and for whom. Rough is fine.</li>
+                <li><strong>Your 2–3 best clients</strong> — not your biggest, your best. What was happening in their world when they hired you? If you're pre-launch, think about the people you most want to help.</li>
+                <li><strong>Your current positioning language</strong> — your LinkedIn headline, how you describe yourself at a dinner party. The real version. Not the polished one.</li>
+                <li><strong>Any existing docs</strong> — website copy, offer documents, prior positioning work. Upload them to your Strategist Coach when the skill asks. More context = sharper output.</li>
+            </ul>
+
+            <div class="note-box">
+                <div class="note-label">If you're pre-launch</div>
+                <p>You don't need clients yet. The skill adjusts. Instead of "your best clients," it asks "the people you most want to help" and "what problems do you see in your space that you're uniquely equipped to solve?" It flags the material as projected rather than evidence-based — exactly the right framing for where you are.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">How to Invoke the Skill</div>
+            <h2>Open the coach. Say the word.</h2>
+            <p class="section-intro">Skills aren't buttons. They're modes the Strategist Coach enters when you signal intent. Use any of these trigger phrases — or anything equivalent — and the skill activates.</p>
+
+            <div class="triggers-block">
+                <div class="t-label">Trigger phrases</div>
+                <ul class="triggers-list">
+                    <li>"Let's run the diagnostic"</li>
+                    <li>"I'm ready for the diagnostic"</li>
+                    <li>"Run my baseline assessment"</li>
+                    <li>"Let's do the compound diagnostic"</li>
+                    <li>"Where do I stand"</li>
+                </ul>
+            </div>
+
+            <p style="margin-top:32px;">Once the skill is active, the coach will:</p>
+            <ol class="step-list">
+                <li>
+                    <div class="step-title">Ask your name + business</div>
+                    <div class="step-body">Quick basics. Used throughout the conversation and in the final output.</div>
+                </li>
+                <li>
+                    <div class="step-title">Move through six phases of structured questions</div>
+                    <div class="step-body">Landscape → Person → Problem → POV → Connections → Reflection. One question at a time. Waits for your answer. Pushes back if vague.</div>
+                </li>
+                <li>
+                    <div class="step-title">Play your inputs back before producing</div>
+                    <div class="step-body">After all questions, summarizes what it heard. You confirm or correct.</div>
+                </li>
+                <li>
+                    <div class="step-title">Generate the structured diagnostic output</div>
+                    <div class="step-body">Inside a code block. Rated across Person / Problem / POV with STRONG / DEVELOPING / UNDEVELOPED. Buyer language captured. Gaps named. Priorities for Phase 1.2 ranked.</div>
+                </li>
+                <li>
+                    <div class="step-title">Hand control back to the Strategist</div>
+                    <div class="step-body">The skill exits cleanly. The Strategist resumes standard behavior and walks you through saving and next steps.</div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">After the Diagnostic</div>
+            <h2>Save the file. Send it. Move forward.</h2>
+            <p class="section-intro">The diagnostic output is your first canonical file. Treat it that way from minute one.</p>
+
+            <ol class="step-list">
+                <li>
+                    <div class="step-title">Copy the diagnostic output</div>
+                    <div class="step-body">The skill delivers it inside a code block. Copy everything between the dividers.</div>
+                </li>
+                <li>
+                    <div class="step-title">Save as <code>compound-consultant-diagnostic.md</code></div>
+                    <div class="step-body">In the <code>/Compound Consultant OS</code> folder you created in 0.1. As a plain text <code>.md</code> file. This is the first file in your knowledge library.</div>
+                </li>
+                <li>
+                    <div class="step-title">Upload the file to your Strategist Coach project</div>
+                    <div class="step-body">In your Strategist Coach's knowledge base, add the file. The Strategist will read it at the start of every future session — including the Positioning skill session in 1.2.</div>
+                </li>
+                <li>
+                    <div class="step-title">Email a copy to Mike</div>
+                    <div class="step-body">Send the diagnostic to <a href="mailto:mike@rejoincoaching.com">mike@rejoincoaching.com</a>. We review it together on your onboarding call. This isn't optional — the call uses the diagnostic as the starting agenda.</div>
+                </li>
+                <li>
+                    <div class="step-title">Move to 1.2 — Build Your Positioning</div>
+                    <div class="step-body">With the diagnostic loaded, you're ready for the Positioning skill — 60–90 minutes of guided build producing 7 canonical files.</div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="cta-bar">
+        <div class="eyebrow">Next</div>
+        <h2>Build your full positioning.</h2>
+        <p>With the diagnostic baseline in your knowledge library, the Positioning Architect skill takes you through the deep build. 60–90 minutes. POV → Problem → Person → Synthesis. Produces the 7 canonical files every downstream phase reads.</p>
+        <a href="/1-2-build-your-positioning" class="cta-button">1.2 — Build Your Positioning →</a>
+    </section>
+
+    <footer>
+        <span class="brand">Compound Consultant</span>
+        <div class="footer-label">1.1 — Run the Diagnostic</div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>0.1 What You're Really Building | Compound Consultant</title>
+    <meta name="description" content="Why AI without context is generic. How a knowledge library compounds. What the Compound O.S. becomes by Day 90 — and why this is the most valuable asset in your business.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #132539;
+            --paper: #F9F8F5;
+            --teal: #13B5A2;
+            --teal-deep: #12917E;
+            --teal-light: #5DCFC1;
+            --mint: #D5F0EC;
+            --slate: #6B7A8D;
+            --slate-deep: #2A3F54;
+            --white: #FFFFFF;
+            --warning: #D4A338;
+            --text-on-dark: rgba(255,255,255,0.92);
+            --text-muted-dark: rgba(255,255,255,0.72);
+            --text-faint-dark: rgba(255,255,255,0.55);
+            --font-display: 'Sora', Arial, sans-serif;
+            --font-body: 'Inter', Arial, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --max-content: 880px;
+            --max-wide: 1080px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { background: var(--paper); color: var(--navy); }
+        body { font-family: var(--font-body); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal); text-decoration: none; }
+        a:hover { color: var(--teal-deep); }
+        header { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(19,37,57,0.08); }
+        .brand { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--navy); }
+        .header-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
+        .breadcrumb-wrap { max-width: var(--max-wide); margin: 0 auto; padding: 28px 40px 0; }
+        .breadcrumb { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); }
+        .breadcrumb a { color: var(--slate); }
+        .breadcrumb a:hover { color: var(--navy); }
+        .breadcrumb span { margin: 0 8px; }
+        .hero { background: var(--navy); color: var(--white); padding: 80px 40px 96px; text-align: center; margin-top: 32px; }
+        .hero .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; }
+        .hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 6vw, 60px); line-height: 1.1; color: var(--white); margin-bottom: 20px; letter-spacing: -0.01em; }
+        .hero .subtitle { font-size: 19px; color: var(--text-muted-dark); max-width: 680px; margin: 0 auto; line-height: 1.6; }
+        .hero .meta-pill { display: inline-flex; gap: 24px; margin-top: 32px; padding: 12px 24px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark); }
+        .hero .meta-pill .sep { color: rgba(255,255,255,0.4); }
+        .section { padding: 88px 40px; }
+        .section.dark { background: var(--navy); color: var(--white); }
+        .section.dark h2, .section.dark h3 { color: var(--white); }
+        .section.dark .eyebrow { color: var(--teal); }
+        .section-inner { max-width: var(--max-content); margin: 0 auto; }
+        .section-inner.wide { max-width: var(--max-wide); }
+        .eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate); margin-bottom: 16px; }
+        h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 4vw, 40px); line-height: 1.15; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.01em; }
+        .section-intro { font-size: 18px; color: var(--slate); max-width: 720px; margin-bottom: 36px; line-height: 1.65; }
+        .section.dark .section-intro { color: var(--text-muted-dark); }
+        h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.3; color: var(--navy); margin-bottom: 10px; }
+        p { margin-bottom: 18px; }
+        p:last-child { margin-bottom: 0; }
+        .section.dark p { color: var(--text-on-dark); }
+        strong { font-weight: 600; color: var(--navy); }
+        .section.dark strong { color: var(--white); }
+        em { font-style: italic; }
+        code { font-family: var(--font-mono); font-size: 14px; background: rgba(19,181,162,0.08); color: var(--teal-deep); padding: 1px 6px; border-radius: 3px; }
+        .section.dark code { background: rgba(93,207,193,0.12); color: var(--teal-light); }
+        .pull-quote { margin: 32px 0; padding: 24px 32px; background: var(--white); border-left: 3px solid var(--teal); font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+        .section.dark .pull-quote { background: rgba(255,255,255,0.05); color: var(--white); }
+
+        /* Versus block */
+        .vs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .vs-card {
+            padding: 28px 30px;
+            border-radius: 4px;
+        }
+        .vs-card.bad {
+            background: rgba(212,163,56,0.08);
+            border: 1px solid rgba(212,163,56,0.25);
+        }
+        .vs-card.good {
+            background: rgba(19,181,162,0.06);
+            border: 1px solid rgba(19,181,162,0.25);
+        }
+        .vs-card .vs-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .vs-card.bad .vs-label { color: var(--warning); }
+        .vs-card.good .vs-label { color: var(--teal-deep); }
+        .vs-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--navy);
+        }
+        .vs-card p {
+            font-size: 14.5px;
+            color: var(--slate-deep);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* Taxonomy table */
+        .tax-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .tax-table th, .tax-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            font-size: 15px;
+            color: rgba(255,255,255,0.85);
+            vertical-align: top;
+        }
+        .tax-table th {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+        }
+        .tax-table tr:last-child td { border-bottom: none; }
+        .tax-table .tax-name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--white);
+        }
+        .tax-table code {
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            background: rgba(93,207,193,0.12);
+            color: var(--teal-light);
+        }
+
+        /* Timeline */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 24px;
+        }
+        .tl-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 24px 22px;
+            border-top: 3px solid var(--teal);
+        }
+        .tl-card.mid { border-top-color: var(--teal-light); }
+        .tl-card.late { border-top-color: var(--mint); }
+        .tl-card .tl-when {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 8px;
+        }
+        .tl-card.mid .tl-when { color: var(--teal-light); }
+        .tl-card.late .tl-when { color: var(--mint); }
+        .tl-card h3 {
+            font-size: 17px;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .tl-card p {
+            font-size: 14px;
+            color: var(--text-muted-dark);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* CTA bar */
+        .cta-bar { background: var(--navy); color: var(--white); padding: 64px 40px; text-align: center; }
+        .cta-bar .eyebrow { color: var(--teal); margin-bottom: 16px; }
+        .cta-bar h2 { color: var(--white); margin-bottom: 16px; }
+        .cta-bar p { color: var(--text-muted-dark); max-width: 620px; margin: 0 auto 28px; }
+        .cta-button { display: inline-block; padding: 16px 32px; background: var(--teal); color: var(--navy); font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 3px; transition: background 0.15s; }
+        .cta-button:hover { background: var(--teal-light); color: var(--navy); }
+
+        footer { background: var(--navy); color: var(--text-muted-dark); padding: 48px 40px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
+        footer .brand { color: var(--white); font-size: 14px; margin-bottom: 8px; display: block; }
+        footer .footer-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+
+        @media (max-width: 900px) {
+            .vs-grid { grid-template-columns: 1fr; }
+            .timeline { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 700px) {
+            header { padding: 16px 24px; }
+            .hero { padding: 56px 24px 64px; }
+            .section { padding: 56px 24px; }
+            .cta-bar { padding: 56px 24px; }
+            .hero .meta-pill { flex-direction: column; gap: 8px; padding: 16px 20px; }
+            .hero .meta-pill .sep { display: none; }
+            .tax-table th, .tax-table td { padding: 12px 14px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="brand">Compound Consultant</a>
+        <div class="header-label">Phase 0 — Setup</div>
+    </header>
+
+    <div class="breadcrumb-wrap">
+        <div class="breadcrumb">
+            <a href="/">Program Map</a>
+            <span>/</span>
+            <a href="/">Phase 0 — Setup</a>
+            <span>/</span>
+            0.1 What You're Really Building
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="eyebrow">0.1 · The System Underneath · Phase 0</div>
+        <h1>What You're Really Building</h1>
+        <p class="subtitle">Before we install anything, understand what you're actually building. Not just a coaching program. A knowledge operating system that makes you 10x faster — and gets better the more you use it.</p>
+        <div class="meta-pill">
+            <span>10 min read</span>
+            <span class="sep">·</span>
+            <span>Read before you install</span>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">The Reality</div>
+            <h2>AI without context is generic.</h2>
+            <p>You've probably used ChatGPT or Claude. You typed a question. You got an answer. The answer was OK. You closed the tab. Next session, you started over — and the AI remembered nothing.</p>
+            <p>That's not a flaw in the AI. It's a missing layer. The AI has broad general knowledge but zero specific knowledge about you, your clients, your voice, your business. Unless you give it that context explicitly, every output is generic by default — because it has nothing to draw from but the average of everything it was trained on.</p>
+
+            <div class="vs-grid">
+                <div class="vs-card bad">
+                    <div class="vs-label">Without context</div>
+                    <h3>"Write me an outreach email."</h3>
+                    <p>Generic LinkedIn template. Sounds like every other consultant. You re-explain your business, your buyer, your tone in every prompt — and the AI still produces something that could come from anyone.</p>
+                </div>
+                <div class="vs-card good">
+                    <div class="vs-label">With context</div>
+                    <h3>"Write me an outreach email." (with your positioning, ICP, and voice loaded)</h3>
+                    <p>Specific to your buyer's situation. Uses their language from your pain maps. Sounds like you wrote it. Produced in minutes. Ready to send with minor edits.</p>
+                </div>
+            </div>
+
+            <p style="margin-top:36px;">The difference isn't the model. It's the context the model has to work from.</p>
+            <div class="pull-quote">
+                Most people use AI as a prompt machine. They get generic outputs and assume that's all AI can do. They're missing the layer that makes everything compound.
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">The Missing Layer</div>
+            <h2>Knowledge architecture is what makes AI work for you specifically.</h2>
+            <p class="section-intro">A knowledge library is a structured set of files that describe your business — your positioning, your buyer, your voice, your frameworks, your decisions. When you sit down to do real work with AI, you load the relevant files. The AI reads them. Now it knows your business — and produces output that's grounded in your reality, not generic averages.</p>
+
+            <p>This is what you're building over the next 90 days. Not just positioning docs. Not just an offer document. A <strong>structured knowledge system that any AI can load to act like a partner who's been embedded in your business for months</strong>.</p>
+
+            <p>In the next module (0.2), you'll install the Strategist Coach — your primary AI partner — and load the skills that will produce your knowledge library file by file. The first skill you'll invoke (in Phase 1) is the Compound Diagnostic, which produces your first canonical file. By Day 90, you'll sit down with your AI, load five files, and produce work in minutes that used to take hours. By Year 2, the system runs your business in 2 hours a week.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">The Taxonomy</div>
+            <h2>Not all files are the same.</h2>
+            <p class="section-intro">As your knowledge library grows, you'll naturally have different types of files doing different jobs. Knowing the difference helps you maintain the library without it turning into a mess.</p>
+
+            <div style="background:#0E1B2A; border-radius:4px; padding:8px; margin-top:16px;">
+                <table class="tax-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Purpose</th>
+                            <th>Examples</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tax-name">Canonical</td>
+                            <td>The source of truth on a topic. Permanent. Updated when reality changes.</td>
+                            <td><code>positioning.md</code>, <code>offer.md</code>, <code>compound-consultant-diagnostic.md</code></td>
+                        </tr>
+                        <tr>
+                            <td class="tax-name">Working</td>
+                            <td>Active context for an ongoing project or decision. May get promoted to canonical or archived.</td>
+                            <td><code>q2-planning-working-notes.md</code>, <code>sales-page-draft.md</code></td>
+                        </tr>
+                        <tr>
+                            <td class="tax-name">Reference</td>
+                            <td>External info you want to remember. Research, frameworks, articles, examples.</td>
+                            <td><code>competitor-research.md</code>, <code>pricing-models-reference.md</code></td>
+                        </tr>
+                        <tr>
+                            <td class="tax-name">Archive</td>
+                            <td>Old versions, completed projects, decisions that have run their course.</td>
+                            <td><code>2025-q4-priorities-archive.md</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p style="margin-top:36px;">Your diagnostic (Phase 1.1) will be your first <strong>canonical</strong> file. Phase 1 produces more canonical files (positioning, ICP, core problem, pain maps, desire maps, narrative spine). Phase 2 adds more (offer doc, sales page, voice guide). The library grows as your business does.</p>
+
+            <p>You don't need to organize this rigidly now. Your Strategist Coach (which you install in Phase 2) will help maintain the library — creating files when domains emerge, updating files when decisions or signal demand it, promoting working notes to canonical when patterns stabilize, archiving stale files.</p>
+
+            <div class="pull-quote">
+                For now, just save the diagnostic. The taxonomy emerges from real artifacts. You don't build the structure cold — you build it as you go.
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner wide">
+            <div class="eyebrow">The Compounding Effect</div>
+            <h2>What your knowledge library becomes.</h2>
+            <p class="section-intro">Every artifact you create over 90 days is a knowledge asset. By itself, each file is useful. The compounding happens because each file makes the next one sharper — and over time the system becomes worth more than any single output.</p>
+
+            <div class="timeline">
+                <div class="tl-card">
+                    <div class="tl-when">Day 1</div>
+                    <h3>One file</h3>
+                    <p>Your diagnostic. Useful as a baseline, but limited on its own. AI can read it and understand your starting point — that's it.</p>
+                </div>
+                <div class="tl-card mid">
+                    <div class="tl-when">Day 30</div>
+                    <h3>Seven files</h3>
+                    <p>Diagnostic + six Phase 1 positioning files. Now AI can write outreach in your voice, draft proposals that speak to your buyer's actual situation, prep discovery calls in minutes.</p>
+                </div>
+                <div class="tl-card late">
+                    <div class="tl-when">Day 90</div>
+                    <h3>15+ canonical files plus the Strategist Coach</h3>
+                    <p>Positioning, offer, sales page, voice guide, pipeline systems, content strategy, decision log. The AI knows your business deeply. You produce in minutes what used to take hours — and the system runs in 2 hours a week of maintenance after that.</p>
+                </div>
+            </div>
+
+            <p style="margin-top:36px;">This is what "compounding" actually means in this context. Most consultants iterate piecemeal — they tweak a LinkedIn post, rewrite an email, redo a proposal. Nothing accumulates because there's no source to update. The work is repeated, not built on.</p>
+
+            <p>You're iterating at the source. Every market conversation feeds back into the canonical files. Every revision improves every future output. The library doesn't depreciate like software does — it appreciates because it captures more of your real business over time.</p>
+
+            <div class="pull-quote">
+                Software depreciates. Knowledge compounds. You're building the second kind.
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="eyebrow">Where This Goes</div>
+            <h2>The library becomes an operating system.</h2>
+            <p class="section-intro">At the start, your knowledge library is just a folder of files. By the time you reach Phase 2, it becomes the foundation for something bigger — an AI operating system that runs strategic thinking, decision-making, and production work across your entire business.</p>
+
+            <p>You'll install your <strong>Strategist Coach</strong> in the very next module (0.2) — your primary AI partner that reads every canonical file at the start of every session. It diagnoses where you are, recommends what to work on, and runs specialized skills (Compound Diagnostic, Positioning Architect, Offer Architect, more to come) for structured production work. When work belongs in a separate project — content production, IP development, automation — the Strategist scopes a brief you take with you.</p>
+
+            <p>You don't need to understand all of this now. The point is to know what you're moving toward: <strong>one strategic AI partner + multiple skills + canonical files + project briefs for separate work</strong>. The Compound O.S. is the architecture above all your production tools. It's what makes the system durable and the value compound.</p>
+
+            <div class="pull-quote">
+                The Strategist Coach is the conductor. The skills are how it does specialized work. The canonical files are the asset that compounds. You install the conductor in 0.2.
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="section-inner">
+            <div class="eyebrow">What to Do Right Now</div>
+            <h2>Two small actions. Outsized return.</h2>
+            <p class="section-intro">You don't need to build a complex folder structure today. You need two things.</p>
+
+            <ol style="list-style:none;counter-reset:setup;margin-top:16px;">
+                <li style="counter-increment:setup;position:relative;padding-left:60px;padding-bottom:24px;">
+                    <span style="position:absolute;left:0;top:-2px;font-family:var(--font-display);font-weight:700;font-size:22px;color:var(--teal);">01</span>
+                    <div style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--white);margin-bottom:6px;">Create one folder on your computer</div>
+                    <div style="color:var(--text-muted-dark);font-size:15.5px;line-height:1.6;">Anywhere you'll actually use it — Dropbox, Google Drive, Desktop, iCloud. Call it <code>/Compound Consultant OS</code>. That's the whole setup. No subfolders required yet. Your canonical files will live here as you produce them, starting in Phase 1.</div>
+                </li>
+                <li style="counter-increment:setup;position:relative;padding-left:60px;padding-bottom:24px;">
+                    <span style="position:absolute;left:0;top:-2px;font-family:var(--font-display);font-weight:700;font-size:22px;color:var(--teal);">02</span>
+                    <div style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--white);margin-bottom:6px;">Move to 0.2 — install your Strategist Coach</div>
+                    <div style="color:var(--text-muted-dark);font-size:15.5px;line-height:1.6;">The next module walks you through installing the AI partner you'll use across the entire program. About 20 minutes. The whole rest of the program runs through this one coach.</div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="cta-bar">
+        <div class="eyebrow">Next</div>
+        <h2>Install your Strategist Coach.</h2>
+        <p>You know what you're building now — the architecture, the compounding logic, why structured files matter. Next: install the AI partner that runs all of it. One coach. Three skills loaded from day one. The conductor of your whole program.</p>
+        <a href="/0-2-install-strategist-coach" class="cta-button">0.2 — Install Strategist Coach →</a>
+    </section>
+
+    <footer>
+        <span class="brand">Compound Consultant</span>
+        <div class="footer-label">0.1 — What You're Really Building</div>
+    </footer>
+
+</body>
+</html>
