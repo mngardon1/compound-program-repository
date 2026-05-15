@@ -152,7 +152,19 @@
             .step-list > li { padding-left: 44px; }
             .step-list > li::before { font-size: 18px; }
         }
+        .bundle-box { background: linear-gradient(135deg, rgba(19,181,162,0.18), rgba(93,207,193,0.08)); border: 1px solid rgba(19,181,162,0.4); border-radius: 6px; padding: 28px 32px; margin: 16px 0 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+        .bundle-box .b-text { flex: 1 1 320px; }
+        .bundle-box .b-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 8px; font-weight: 600; }
+        .bundle-box .b-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 6px; letter-spacing: -0.01em; }
+        .bundle-box .b-sub { color: var(--text-muted-dark); font-size: 14px; line-height: 1.5; }
+        .bundle-btn { font-family: var(--font-display); font-size: 15px; font-weight: 600; background: var(--teal); color: var(--navy); border: none; padding: 14px 24px; border-radius: 4px; cursor: pointer; transition: background 0.15s, transform 0.05s; white-space: nowrap; }
+        .bundle-btn:hover { background: var(--teal-light); }
+        .bundle-btn:active { transform: translateY(1px); }
+        .bundle-btn:disabled { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.4); cursor: not-allowed; }
+        .bundle-btn.done { background: var(--mint); color: var(--navy); }
+        .bundle-btn.err { background: var(--warning); color: var(--navy); }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
 
@@ -163,9 +175,9 @@
 
     <div class="breadcrumb-wrap">
         <div class="breadcrumb">
-            <a href="/">Program Map</a>
+            <a href="/program/">Program Map</a>
             <span>/</span>
-            <a href="/">Phase 0 — Setup</a>
+            <a href="/program/phase-0/">Phase 0 — Setup</a>
             <span>/</span>
             0.2 Install Your Strategist Coach
         </div>
@@ -270,7 +282,18 @@
         <div class="section-inner">
             <div class="eyebrow">The Files</div>
             <h2>Four files install your Strategist Coach.</h2>
-            <p class="section-intro">The system prompt goes into your project's Instructions field. The three skill files go into the knowledge base. All four auto-update — when the system improves, this page reflects it. Click Copy each time you set up or refresh.</p>
+            <p class="section-intro">The system prompt goes into your project's Instructions field. The three skill files go into the knowledge base. All four auto-update — when the system improves, this page reflects it.</p>
+
+            <div class="bundle-box">
+                <div class="b-text">
+                    <div class="b-label">Fastest install</div>
+                    <div class="b-title">Download all 4 files (.zip)</div>
+                    <div class="b-sub">Get the system prompt and three skill files in one bundle, named correctly and ready to upload. Includes a README with install order.</div>
+                </div>
+                <button class="bundle-btn" id="bundle-btn" onclick="downloadBundle()" disabled>Loading files…</button>
+            </div>
+
+            <p style="color:var(--text-muted-dark);font-size:14px;margin:-24px 0 36px;">Prefer to copy each file individually? Use the Copy buttons below.</p>
 
             <h3 style="color:var(--white);margin-top:8px;">File 1 — System Prompt</h3>
             <p style="color:var(--text-muted-dark);font-size:15px;margin-top:6px;margin-bottom:12px;">Paste this into the <em>Instructions</em> field of your Claude Project or Custom GPT.</p>
@@ -425,7 +448,7 @@
         <div class="eyebrow">Next</div>
         <h2>One mindset reset, then Phase 1 begins.</h2>
         <p>Your Strategist Coach is installed. Before you run your first skill (the Diagnostic), one short read on the positioning mindset — three traps every consultant falls into, and the questions to carry into Phase 1.</p>
-        <a href="/0-3-positioning-mindset-reset" class="cta-button">0.3 — Positioning Mindset Reset →</a>
+        <a href="/program/0-3-positioning-mindset-reset/" class="cta-button">0.3 — Positioning Mindset Reset →</a>
     </section>
 
     <footer>
@@ -472,10 +495,78 @@
             });
         }
 
+        const BUNDLE_FILES = [
+            { url: SOURCES.systemPrompt, name: 'strategist-coach-system-prompt.md' },
+            { url: SOURCES.diagnostic,   name: 'skill-compound-diagnostic.md' },
+            { url: SOURCES.positioning,  name: 'skill-positioning-architect.md' },
+            { url: SOURCES.offer,        name: 'skill-offer-architect.md' }
+        ];
+
+        const README_TEXT = `COMPOUND STRATEGIST COACH — INSTALL BUNDLE
+
+Install order:
+1. strategist-coach-system-prompt.md
+   → Open your Claude Project. Paste the contents of this file into the Instructions field. Save.
+
+2. skill-compound-diagnostic.md
+3. skill-positioning-architect.md
+4. skill-offer-architect.md
+   → Upload these three files to the Project's Knowledge Base as-is. Do not rename.
+
+Full walkthrough: https://program.rejoincoaching.com/0-2-install-strategist-coach
+`;
+
+        let bundleCache = null;
+
+        async function preloadBundle() {
+            const results = await Promise.all(BUNDLE_FILES.map(async f => {
+                const res = await fetch(f.url, { cache: 'no-store' });
+                if (!res.ok) throw new Error(`${f.name}: HTTP ${res.status}`);
+                return { name: f.name, text: await res.text() };
+            }));
+            bundleCache = results;
+            const btn = document.getElementById('bundle-btn');
+            btn.disabled = false;
+            btn.textContent = 'Download bundle (.zip)';
+        }
+
+        async function downloadBundle() {
+            const btn = document.getElementById('bundle-btn');
+            btn.disabled = true;
+            btn.textContent = 'Building zip…';
+            try {
+                if (!bundleCache) await preloadBundle();
+                const zip = new JSZip();
+                zip.file('README.txt', README_TEXT);
+                bundleCache.forEach(f => zip.file(f.name, f.text));
+                const blob = await zip.generateAsync({ type: 'blob' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'compound-strategist-coach-install.zip';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                btn.classList.add('done');
+                btn.textContent = 'Downloaded ✓';
+                setTimeout(() => { btn.classList.remove('done'); btn.textContent = 'Download bundle (.zip)'; btn.disabled = false; }, 3000);
+            } catch (err) {
+                btn.classList.add('err');
+                btn.textContent = 'Failed — try again';
+                setTimeout(() => { btn.classList.remove('err'); btn.textContent = 'Download bundle (.zip)'; btn.disabled = false; }, 3000);
+            }
+        }
+
         fetchPrompt(SOURCES.systemPrompt, 'prompt-content-prompt', 'prompt-meta-prompt');
         fetchPrompt(SOURCES.diagnostic, 'prompt-content-diagnostic', 'prompt-meta-diagnostic');
         fetchPrompt(SOURCES.positioning, 'prompt-content-positioning', 'prompt-meta-positioning');
         fetchPrompt(SOURCES.offer, 'prompt-content-offer', 'prompt-meta-offer');
+        preloadBundle().catch(() => {
+            const btn = document.getElementById('bundle-btn');
+            btn.classList.add('err');
+            btn.textContent = 'Source unavailable';
+        });
     </script>
 
 </body>
